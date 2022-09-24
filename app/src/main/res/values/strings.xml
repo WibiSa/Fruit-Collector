@@ -12,4 +12,6 @@
     <string name="name">Nama</string>
     <string name="phone">Telepon</string>
     <string name="talk_back_btn_back">Tombol kembali</string>
+    <string name="home">Home</string>
+    <string name="account">Akun</string>
 </resources>

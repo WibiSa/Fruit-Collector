@@ -10,4 +10,9 @@
         android:name="com.wibisa.fruitcollector.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/account"
+        android:name="com.wibisa.fruitcollector.ui.account.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
 </navigation>
