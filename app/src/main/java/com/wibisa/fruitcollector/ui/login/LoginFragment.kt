@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.core.util.hideKeyboard
 import com.wibisa.fruitcollector.core.util.isNotNullOrEmpty
@@ -23,6 +25,7 @@ import kotlinx.coroutines.launch
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+    private val authNavController: NavController? by lazy { view?.findNavController() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +52,8 @@ class LoginFragment : Fragment() {
         binding.tfEmail.showOrHideHint()
         binding.tfPassword.showOrHideHint()
 
-        binding.tvGoToRegister.setOnClickListener { requireContext().showToast(getString(R.string.Feature_on_progress)) }
+        binding.tvGoToRegister.setOnClickListener { authNavController?.navigate(R.id.action_login_to_register) }
+
         binding.btnLogin.setOnClickListener {
             val isValid = binding.tfEmail.isNotNullOrEmpty(getString(R.string.required)) and
                     binding.tfPassword.isNotNullOrEmpty(getString(R.string.required))
