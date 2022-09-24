@@ -4,18 +4,17 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.core.util.hideKeyboard
 import com.wibisa.fruitcollector.core.util.isNotNullOrEmpty
 import com.wibisa.fruitcollector.core.util.showOrHideHint
-import com.wibisa.fruitcollector.core.util.showToast
 import com.wibisa.fruitcollector.databinding.FragmentLoginBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +25,7 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private val authNavController: NavController? by lazy { view?.findNavController() }
+    private val baseNavController: NavController? by lazy { activity?.findNavController(R.id.base_nav_host) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,10 +71,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun login() {
-        val email = binding.tfEmail.text.toString().trim()
-        val password = binding.tfPassword.text.toString().trim()
-        val message = "$email, $password"
+//        val email = binding.tfEmail.text.toString().trim()
+//        val password = binding.tfPassword.text.toString().trim()
+//        val message = "$email, $password"
 
-        requireContext().showToast(message)
+        baseNavController?.navigate(R.id.action_baseAuthentication_to_baseMainFlow)
     }
 }
