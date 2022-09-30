@@ -16,6 +16,19 @@
         <item name="borderlessButtonStyle">@style/Fc.Button.TextButton</item>
         <item name="materialButtonOutlinedStyle">@style/Fc.Button.OutlinedButton</item>
         <item name="materialButtonStyle">@style/Fc.Button</item>
+        <item name="toolbarStyle">@style/Fc.Toolbar</item>
+    </style>
+
+    <!-- Appbar -->
+    <style name="Fc.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Fc.Toolbar</item>
+        <item name="titleTextAppearance">@style/Poppins.Headline6</item>
+        <item name="subtitleTextAppearance">@style/Poppins.Subtitle1</item>
+    </style>
+
+    <style name="ThemeOverlay.Fc.Toolbar" parent="">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/black</item>
     </style>
 
     <!-- Button -->
