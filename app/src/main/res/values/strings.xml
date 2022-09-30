@@ -14,4 +14,12 @@
     <string name="talk_back_btn_back">Tombol kembali</string>
     <string name="home">Home</string>
     <string name="account">Akun</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="land_area">Luas Lahan</string>
+    <string name="number_of_tree">Jumlah Pohon</string>
+    <string name="production_estimate">Estimasi Produksi (Kg)</string>
+    <string name="add_farmer">Tambah Petani</string>
+    <string name="save">Simpan</string>
+    <string name="land_location">Lokasi Lahan</string>
+    <string name="farmer">Petani</string>
 </resources>

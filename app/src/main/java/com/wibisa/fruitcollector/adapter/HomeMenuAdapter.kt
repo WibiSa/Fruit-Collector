@@ -1,6 +1,5 @@
 package com.wibisa.fruitcollector.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,7 +9,8 @@ import com.bumptech.glide.Glide
 import com.wibisa.fruitcollector.core.domain.model.HomeMenu
 import com.wibisa.fruitcollector.databinding.ItemMenuHomeBinding
 
-class HomeMenuAdapter : ListAdapter<HomeMenu, HomeMenuAdapter.HomeMenuViewHolder>(COMPARATOR) {
+class HomeMenuAdapter(private val clickListener: HomeMenuListener) :
+    ListAdapter<HomeMenu, HomeMenuAdapter.HomeMenuViewHolder>(COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeMenuViewHolder {
         val itemMenuHomeBinding =
@@ -21,16 +21,16 @@ class HomeMenuAdapter : ListAdapter<HomeMenu, HomeMenuAdapter.HomeMenuViewHolder
     override fun onBindViewHolder(holder: HomeMenuViewHolder, position: Int) {
         val menu = getItem(position)
         if (menu != null)
-            holder.bind(menu)
+            holder.bind(menu, clickListener)
     }
 
     class HomeMenuViewHolder(private val binding: ItemMenuHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: HomeMenu) {
+        fun bind(item: HomeMenu, clickListener: HomeMenuListener) {
             binding.tvMenu.text = item.name
             Glide.with(itemView).load(item.image).into(binding.imgMenu)
 
-            itemView.setOnClickListener { Log.d("HomeMenuAdapter", "${item.name} tapped!") }
+            itemView.setOnClickListener { clickListener.onClick(item) }
         }
     }
 
@@ -43,4 +43,8 @@ class HomeMenuAdapter : ListAdapter<HomeMenu, HomeMenuAdapter.HomeMenuViewHolder
                 oldItem == newItem
         }
     }
+}
+
+class HomeMenuListener(val clickListener: (homeMenu: HomeMenu) -> Unit) {
+    fun onClick(homeMenu: HomeMenu) = clickListener(homeMenu)
 }

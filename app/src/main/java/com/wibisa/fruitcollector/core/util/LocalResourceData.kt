@@ -3,6 +3,7 @@ package com.wibisa.fruitcollector.core.util
 import android.content.Context
 import androidx.core.content.ContextCompat
 import com.wibisa.fruitcollector.R
+import com.wibisa.fruitcollector.core.domain.model.Farmer
 import com.wibisa.fruitcollector.core.domain.model.HomeMenu
 import com.wibisa.fruitcollector.core.domain.model.ImageBanner
 
@@ -23,5 +24,12 @@ class LocalResourceData(context: Context) {
         ImageBanner(ContextCompat.getDrawable(context, R.drawable.banner_sample)!!),
         ImageBanner(ContextCompat.getDrawable(context, R.drawable.banner_sample)!!),
         ImageBanner(ContextCompat.getDrawable(context, R.drawable.banner_sample)!!)
+    )
+
+    val dummyFarmers = listOf(
+        Farmer("1", "Budi Suharto"),
+        Farmer("2", "Budi Harto"),
+        Farmer("3", "Cipta Rama"),
+        Farmer("4", "Suharto Aji")
     )
 }
