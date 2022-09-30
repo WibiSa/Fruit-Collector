@@ -9,10 +9,27 @@
         android:id="@+id/homeScreen"
         android:name="com.wibisa.fruitcollector.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeScreen_to_addFarmer"
+            app:destination="@id/addFarmer" />
+        <action
+            android:id="@+id/action_homeScreen_to_farmers"
+            app:destination="@id/farmers" />
+    </fragment>
     <fragment
         android:id="@+id/account"
         android:name="com.wibisa.fruitcollector.ui.account.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/addFarmer"
+        android:name="com.wibisa.fruitcollector.ui.farmer.AddFarmerFragment"
+        android:label="fragment_add_farmer"
+        tools:layout="@layout/fragment_add_farmer" />
+    <fragment
+        android:id="@+id/farmers"
+        android:name="com.wibisa.fruitcollector.ui.farmer.FarmersFragment"
+        android:label="fragment_farmers"
+        tools:layout="@layout/fragment_farmers" />
 </navigation>

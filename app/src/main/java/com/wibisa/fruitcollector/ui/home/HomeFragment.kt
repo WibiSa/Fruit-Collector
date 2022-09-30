@@ -5,7 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.adapter.HomeMenuAdapter
+import com.wibisa.fruitcollector.adapter.HomeMenuListener
 import com.wibisa.fruitcollector.adapter.ImageSliderAdapter
 import com.wibisa.fruitcollector.core.util.LocalResourceData
 import com.wibisa.fruitcollector.databinding.FragmentHomeBinding
@@ -16,6 +20,7 @@ class HomeFragment : Fragment() {
     private lateinit var localResourceData: LocalResourceData
     private lateinit var menuAdapter: HomeMenuAdapter
     private lateinit var imageSliderAdapter: ImageSliderAdapter
+    private val mainFlowNavController: NavController? by lazy { view?.findNavController() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,10 +48,24 @@ class HomeFragment : Fragment() {
     private fun menuAdapterSetup() {
         val menu = localResourceData.homeMenu
 
-        menuAdapter = HomeMenuAdapter()
+        menuAdapter = HomeMenuAdapter(HomeMenuListener {
+            menuNavRoute(it.name)
+        })
         binding.rvHomeMenu.adapter = menuAdapter
         menuAdapter.submitList(menu)
 
+    }
+
+    private fun menuNavRoute(menuName: String) {
+        when (menuName) {
+            "Tambah Petani" -> {
+                mainFlowNavController?.navigate(R.id.action_homeScreen_to_addFarmer)
+            }
+            "Petani" -> {
+                mainFlowNavController?.navigate(R.id.action_homeScreen_to_farmers)
+            }
+            else -> {}
+        }
     }
 
     private fun imageSliderSetup() {
