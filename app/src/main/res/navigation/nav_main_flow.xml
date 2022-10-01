@@ -31,5 +31,14 @@
         android:id="@+id/farmers"
         android:name="com.wibisa.fruitcollector.ui.farmer.FarmersFragment"
         android:label="fragment_farmers"
-        tools:layout="@layout/fragment_farmers" />
+        tools:layout="@layout/fragment_farmers" >
+        <action
+            android:id="@+id/action_farmers_to_farmerDetails"
+            app:destination="@id/farmerDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/farmerDetails"
+        android:name="com.wibisa.fruitcollector.ui.farmer.FarmerDetailsFragment"
+        android:label="fragment_farmer_details"
+        tools:layout="@layout/fragment_farmer_details" />
 </navigation>

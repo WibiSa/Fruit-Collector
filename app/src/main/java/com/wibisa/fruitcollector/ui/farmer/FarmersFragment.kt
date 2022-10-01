@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.adapter.FarmersAdapter
 import com.wibisa.fruitcollector.adapter.FarmersListener
 import com.wibisa.fruitcollector.core.util.LocalResourceData
-import com.wibisa.fruitcollector.core.util.showToast
 import com.wibisa.fruitcollector.databinding.FragmentFarmersBinding
 
 class FarmersFragment : Fragment() {
@@ -47,7 +47,8 @@ class FarmersFragment : Fragment() {
         val farmers = localResourceData.dummyFarmers
 
         adapter = FarmersAdapter(FarmersListener {
-            requireContext().showToast("${it.name} dipilih.")
+            // TODO: pass data to detail
+            mainFlowNavController?.navigate(R.id.action_farmers_to_farmerDetails)
         })
         binding.rvFarmers.adapter = adapter
         adapter.submitList(farmers)

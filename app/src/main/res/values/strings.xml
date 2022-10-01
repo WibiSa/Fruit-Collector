@@ -22,4 +22,5 @@
     <string name="save">Simpan</string>
     <string name="land_location">Lokasi Lahan</string>
     <string name="farmer">Petani</string>
+    <string name="delete">Hapus</string>
 </resources>
