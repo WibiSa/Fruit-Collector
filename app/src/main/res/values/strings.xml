@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Fruit Collector</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="login">Login</string>
     <string name="register_here">Belum punya akun? Daftar disini</string>
     <string name="Feature_on_progress">Fitur sedang tahap pengembangan.</string>
@@ -23,4 +22,12 @@
     <string name="land_location">Lokasi Lahan</string>
     <string name="farmer">Petani</string>
     <string name="delete">Hapus</string>
+    <string name="valid">Valid</string>
+    <string name="validation">Validasi</string>
+    <string name="commodity_validation_message">Jika catatan telah di validasi, maka data tidak dapat dirubah.</string>
+    <string name="commodity_details">Detail Komoditas</string>
+    <string name="tree_blossom_date">Tanggal Pohon Berbunga</string>
+    <string name="harvest_date">Tanggal Panen</string>
+    <string name="fruit_grade">Grade atau Kualitas Buah</string>
+    <string name="harvest_result">Berat Hasil Panen</string>
 </resources>

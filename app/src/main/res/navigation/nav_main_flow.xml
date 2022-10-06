@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_homeScreen_to_farmers"
             app:destination="@id/farmers" />
+        <action
+            android:id="@+id/action_homeScreen_to_recordCommodityGraph"
+            app:destination="@id/recordCommodityGraph" />
+        <action
+            android:id="@+id/action_homeScreen_to_commodity"
+            app:destination="@id/commodity" />
     </fragment>
     <fragment
         android:id="@+id/account"
@@ -41,4 +47,40 @@
         android:name="com.wibisa.fruitcollector.ui.farmer.FarmerDetailsFragment"
         android:label="fragment_farmer_details"
         tools:layout="@layout/fragment_farmer_details" />
+    <navigation android:id="@+id/recordCommodityGraph"
+        app:startDestination="@id/recordCommodityStepOne">
+        <fragment
+            android:id="@+id/recordCommodityStepTwo"
+            android:name="com.wibisa.fruitcollector.ui.commodity.RecordCommodityStepTwoFragment"
+            android:label="fragment_record_commodity_step_two"
+            tools:layout="@layout/fragment_record_commodity_step_two" />
+        <fragment
+            android:id="@+id/recordCommodityStepOne"
+            android:name="com.wibisa.fruitcollector.ui.commodity.RecordCommodityStepOneFragment"
+            android:label="fragment_record_commodity_step_one"
+            tools:layout="@layout/fragment_record_commodity_step_one">
+            <action
+                android:id="@+id/action_recordCommodityStepOne_to_recordCommodityStepTwo"
+                app:destination="@id/recordCommodityStepTwo" />
+        </fragment>
+    </navigation>
+    <action
+        android:id="@+id/action_global_homeScreen"
+        app:destination="@id/homeScreen"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/homeScreen" />
+    <fragment
+        android:id="@+id/commodity"
+        android:name="com.wibisa.fruitcollector.ui.commodity.CommodityFragment"
+        android:label="fragment_commodity"
+        tools:layout="@layout/fragment_commodity" >
+        <action
+            android:id="@+id/action_commodity_to_commodityDetails"
+            app:destination="@id/commodityDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/commodityDetails"
+        android:name="com.wibisa.fruitcollector.ui.commodity.CommodityDetailsFragment"
+        android:label="fragment_commodity_details"
+        tools:layout="@layout/fragment_commodity_details" />
 </navigation>

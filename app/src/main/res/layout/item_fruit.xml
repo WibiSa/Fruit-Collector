@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:checkable="true"
+    android:focusable="true"
+    android:clickable="true"
+    android:id="@+id/card_fruit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="2dp"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+    app:strokeColor="@color/stroke_color"
+    app:strokeWidth="1dp">
+
+    <TextView
+        android:id="@+id/tv_fruit_name"
+        style="@style/Poppins.Subtitle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        tools:text="Apple" />
+</com.google.android.material.card.MaterialCardView>

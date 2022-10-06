@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.commodity.CommodityDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <Button
+            android:id="@+id/btn_save"
+            style="@style/Fc.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_delete" />
+
+        <Button
+            android:id="@+id/btn_delete"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/delete"
+            android:textAllCaps="false"
+            android:textColor="@color/grey"
+            android:textSize="13sp"
+            app:icon="@drawable/ic_trash"
+            app:iconSize="16dp"
+            app:iconTint="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tf_production_result_layout" />
+
+        <Button
+            android:id="@+id/btn_validation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/validation"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/btn_save" />
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/talk_back_btn_back"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_back_ios"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_screen_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_screen_title" />
+
+        <ImageView
+            android:id="@+id/img_farmer"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="24dp"
+            android:scaleType="center"
+            android:src="@drawable/img_farmer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_back"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_fruit"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_fruit_bowl"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_fruit_name"
+            app:layout_constraintStart_toStartOf="@id/tv_farmer_name"
+            app:layout_constraintTop_toTopOf="@id/tv_fruit_name"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/lbl_warning_validation"
+            style="@style/Poppins.Caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/commodity_validation_message"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintTop_toBottomOf="@id/btn_validation" />
+
+        <TextView
+            android:id="@+id/tv_farmer_name"
+            style="@style/Poppins.Headline6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_farmer"
+            app:layout_constraintTop_toTopOf="@+id/img_farmer"
+            tools:text="Budi Suharto" />
+
+        <TextView
+            android:id="@+id/tv_fruit_name"
+            style="@style/Poppins.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/green"
+            app:layout_constraintStart_toEndOf="@id/img_fruit"
+            app:layout_constraintTop_toBottomOf="@+id/tv_farmer_name"
+            tools:text="Manggis" />
+
+        <TextView
+            android:id="@+id/tv_screen_title"
+            style="@style/Poppins.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/commodity_details"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lbl_tree_blossom_date"
+            style="@style/Poppins.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/tree_blossom_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+
+        <TextView
+            android:id="@+id/lbl_Harvest_date"
+            style="@style/Poppins.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/harvest_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tf_tree_blossom_layout" />
+
+        <TextView
+            android:id="@+id/lbl_fruit_grade"
+            style="@style/Poppins.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/fruit_grade"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tf_harvest_date_layout" />
+
+        <TextView
+            android:id="@+id/lbl_production_result"
+            style="@style/Poppins.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/harvest_result"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tf_fruit_grade_layout" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@id/tv_fruit_name" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/loading_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/btn_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tf_production_result_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tf_tree_blossom_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconDrawable="@drawable/ic_calender"
+            app:endIconMode="custom"
+            app:endIconTint="@color/green"
+            app:layout_constraintTop_toBottomOf="@id/lbl_tree_blossom_date">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tf_tree_blossom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tf_harvest_date_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconDrawable="@drawable/ic_calender"
+            app:endIconMode="custom"
+            app:endIconTint="@color/green"
+            app:layout_constraintTop_toBottomOf="@id/lbl_Harvest_date">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tf_harvest_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tf_fruit_grade_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/lbl_fruit_grade">
+
+            <AutoCompleteTextView
+                android:id="@+id/tf_fruit_grade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tf_production_result_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/lbl_production_result">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tf_production_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

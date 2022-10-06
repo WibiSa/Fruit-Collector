@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".ui.farmer.FarmersFragment">
+    tools:context=".ui.commodity.CommodityFragment">
 
     <ImageView
         android:id="@+id/btn_back"
@@ -23,21 +23,20 @@
         style="@style/Poppins.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/farmer"
+        android:text="Komoditas Buah"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_farmers"
+        android:id="@+id/rv_fruit_commodity"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="44dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_screen_title"
-        tools:itemCount="10"
-        tools:listitem="@layout/item_farmer" />
+        tools:listitem="@layout/item_fruit_commodity" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/loading_indicator"

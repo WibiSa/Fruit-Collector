@@ -1,4 +1,4 @@
-package com.wibisa.fruitcollector.ui.farmer
+package com.wibisa.fruitcollector.ui.commodity
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,15 +11,16 @@ import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.adapter.FarmersAdapter
 import com.wibisa.fruitcollector.adapter.FarmersListener
 import com.wibisa.fruitcollector.core.util.LocalResourceData
-import com.wibisa.fruitcollector.databinding.FragmentFarmersBinding
+import com.wibisa.fruitcollector.core.util.showToast
+import com.wibisa.fruitcollector.databinding.FragmentRecordCommodityStepOneBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class FarmersFragment : Fragment() {
+class RecordCommodityStepOneFragment : Fragment() {
 
-    private lateinit var binding: FragmentFarmersBinding
+    private lateinit var binding: FragmentRecordCommodityStepOneBinding
     private lateinit var adapter: FarmersAdapter
     private lateinit var localResourceData: LocalResourceData
     private val mainFlowNavController: NavController? by lazy { view?.findNavController() }
@@ -29,7 +30,7 @@ class FarmersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentFarmersBinding.inflate(inflater, container, false)
+        binding = FragmentRecordCommodityStepOneBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -48,9 +49,9 @@ class FarmersFragment : Fragment() {
     }
 
     private fun farmersAdapterSetup() {
-        adapter = FarmersAdapter(clickListener = FarmersListener {
-            // TODO: pass data to detail
-            mainFlowNavController?.navigate(R.id.action_farmers_to_farmerDetails)
+        adapter = FarmersAdapter(isSuffixImageShow = false, clickListener = FarmersListener {
+            // TODO: pass data with viewModel navGraph scope
+            mainFlowNavController?.navigate(R.id.action_recordCommodityStepOne_to_recordCommodityStepTwo)
         })
         binding.rvFarmers.adapter = adapter
         val farmers = localResourceData.dummyFarmers

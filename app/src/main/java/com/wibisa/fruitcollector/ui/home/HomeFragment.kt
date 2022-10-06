@@ -64,6 +64,12 @@ class HomeFragment : Fragment() {
             "Petani" -> {
                 mainFlowNavController?.navigate(R.id.action_homeScreen_to_farmers)
             }
+            "Catat Komoditas" -> {
+                mainFlowNavController?.navigate(R.id.action_homeScreen_to_recordCommodityGraph)
+            }
+            "Komoditas" -> {
+                mainFlowNavController?.navigate(R.id.action_homeScreen_to_commodity)
+            }
             else -> {}
         }
     }

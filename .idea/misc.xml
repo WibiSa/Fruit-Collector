@@ -7,6 +7,8 @@
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/drawable/bg_sheet_top_round.xml" value="0.178" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/drawable/ic_arrow_back_ios.xml" value="0.138" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/drawable/ic_arrow_forward_ios.xml" value="0.178" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/drawable/ic_calendar.xml" value="0.178" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/drawable/ic_calender.xml" value="0.198" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/drawable/ic_home.xml" value="0.178" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/drawable/ic_splash.xml" value="0.182" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/drawable/ic_user.xml" value="0.182" />
@@ -15,12 +17,19 @@
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_add_farmer.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_base_authentication.xml" value="0.22541156606162938" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_base_main_flow.xml" value="0.25" />
-        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_farmer_details.xml" value="0.22830269345874304" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_commodity.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_commodity_details.xml" value="0.4149184149184149" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_farmer_details.xml" value="0.33" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_farmers.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_record_commodity_step_one.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_record_commodity_step_two.xml" value="0.33" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_register.xml" value="0.22" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/item_exposed_dropdown_menu.xml" value="0.22830269345874304" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/item_farmer.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/item_fruit.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/item_fruit_commodity.xml" value="0.5" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/item_image_slider.xml" value="0.22830269345874304" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/item_menu_home.xml" value="0.67" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/menu/bottom_nav_bar.xml" value="0.2274476271911073" />
@@ -33,5 +42,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".ui.farmer.FarmersFragment">
+    tools:context=".ui.commodity.RecordCommodityStepOneFragment">
 
     <ImageView
         android:id="@+id/btn_back"
@@ -14,29 +14,39 @@
         android:contentDescription="@string/talk_back_btn_back"
         android:scaleType="center"
         android:src="@drawable/ic_arrow_back_ios"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_screen_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_screen_title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_screen_title"
+        android:id="@+id/lbl_screen_title"
         style="@style/Poppins.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/farmer"
+        android:layout_marginTop="24dp"
+        android:text="Catat Komoditas Petani"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+    <TextView
+        android:id="@+id/lbl_guide"
+        style="@style/Poppins.Subtitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Pilih petani terlebih dahulu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lbl_screen_title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_farmers"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_screen_title"
-        tools:itemCount="10"
+        app:layout_constraintTop_toBottomOf="@id/lbl_guide"
         tools:listitem="@layout/item_farmer" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -49,6 +59,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@id/lbl_guide" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,25 +41,26 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:id="@+id/img_farmer"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_farmer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_back"
-            tools:ignore="ContentDescription"
-            tools:src="@tools:sample/avatars" />
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/lbl_screen_title"
-            style="@style/TextAppearance.Material3.TitleLarge"
+            style="@style/Poppins.Headline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Info Petani"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/img_farmer" />
 
         <TextView
             android:id="@+id/lbl_name"
@@ -111,6 +112,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tf_production_estimate_layout" />
 
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/loading_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tf_land_location_layout" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tf_name_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -133,9 +145,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:suffixText="Hektar"
             android:hint="Masukan Luas Lahan Anda"
-            app:layout_constraintTop_toBottomOf="@id/lbl_land_area">
+            app:layout_constraintTop_toBottomOf="@id/lbl_land_area"
+            app:suffixText="Hektar">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tf_land_area"
@@ -160,26 +172,15 @@
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/loading_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:indeterminate="true"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tf_land_location_layout" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tf_production_estimate_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:suffixText="Kg"
             android:hint="Masukan Estimasi Produksi Anda"
-            app:layout_constraintTop_toBottomOf="@id/lbl_production_estimate">
+            app:layout_constraintTop_toBottomOf="@id/lbl_production_estimate"
+            app:suffixText="Kg">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tf_production_estimate"
