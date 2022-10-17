@@ -70,6 +70,9 @@ class HomeFragment : Fragment() {
             "Komoditas" -> {
                 mainFlowNavController?.navigate(R.id.action_homeScreen_to_commodity)
             }
+            "Buat Transaksi" -> {
+                mainFlowNavController?.navigate(R.id.action_homeScreen_to_transactionLanding)
+            }
             else -> {}
         }
     }

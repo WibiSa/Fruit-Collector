@@ -52,7 +52,7 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/lbl_screen_title"
+            android:id="@+id/tv_screen_title"
             style="@style/Poppins.Headline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lbl_screen_title" />
+            app:layout_constraintTop_toBottomOf="@id/tv_screen_title" />
 
         <TextView
             android:id="@+id/lbl_land_area"

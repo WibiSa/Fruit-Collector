@@ -30,4 +30,8 @@
     <string name="harvest_date">Tanggal Panen</string>
     <string name="fruit_grade">Grade atau Kualitas Buah</string>
     <string name="harvest_result">Berat Hasil Panen</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="customer">Pelanggan</string>
+    <string name="create_transaction">Buat Transaksi</string>
 </resources>

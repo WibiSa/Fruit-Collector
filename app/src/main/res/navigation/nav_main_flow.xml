@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeScreen_to_commodity"
             app:destination="@id/commodity" />
+        <action
+            android:id="@+id/action_homeScreen_to_transactionLanding"
+            app:destination="@id/transactionLanding" />
     </fragment>
     <fragment
         android:id="@+id/account"
@@ -83,4 +86,30 @@
         android:name="com.wibisa.fruitcollector.ui.commodity.CommodityDetailsFragment"
         android:label="fragment_commodity_details"
         tools:layout="@layout/fragment_commodity_details" />
+    <fragment
+        android:id="@+id/transactionLanding"
+        android:name="com.wibisa.fruitcollector.ui.transaction.TransactionLandingFragment"
+        android:label="fragment_transaction_landing"
+        tools:layout="@layout/fragment_transaction_landing" >
+        <action
+            android:id="@+id/action_transactionLanding_to_createTransactionWithFarmer"
+            app:destination="@id/createTransactionWithFarmer" />
+    </fragment>
+    <navigation android:id="@+id/createTransactionWithFarmer"
+        app:startDestination="@id/createFarmerTransactionStepOne">
+        <fragment
+            android:id="@+id/createFarmerTransactionStepOne"
+            android:name="com.wibisa.fruitcollector.ui.transaction.framertransaction.CreateFarmerTransactionStepOneFragment"
+            android:label="fragment_create_farmer_transaction_step_one"
+            tools:layout="@layout/fragment_create_farmer_transaction_step_one">
+            <action
+                android:id="@+id/action_createFarmerTransactionStepOne_to_createFarmerTransactionStepTwo"
+                app:destination="@id/createFarmerTransactionStepTwo" />
+        </fragment>
+        <fragment
+            android:id="@+id/createFarmerTransactionStepTwo"
+            android:name="com.wibisa.fruitcollector.ui.transaction.framertransaction.CreateFarmerTransactionStepTwoFragment"
+            android:label="fragment_create_farmer_transaction_step_two"
+            tools:layout="@layout/fragment_create_farmer_transaction_step_two" />
+    </navigation>
 </navigation>

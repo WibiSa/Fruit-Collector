@@ -53,7 +53,7 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
-            android:id="@+id/lbl_screen_title"
+            android:id="@+id/tv_screen_title"
             style="@style/Poppins.Headline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:hint="@string/full_name"
-            app:layout_constraintTop_toBottomOf="@id/lbl_screen_title">
+            app:layout_constraintTop_toBottomOf="@id/tv_screen_title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tf_name"

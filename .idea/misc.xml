@@ -19,6 +19,8 @@
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_base_main_flow.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_commodity.xml" value="0.33" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_commodity_details.xml" value="0.4149184149184149" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_create_farmer_transaction_step_one.xml" value="0.33" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_create_farmer_transaction_step_two.xml" value="0.33" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_farmer_details.xml" value="0.33" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_farmers.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_home.xml" value="0.33" />
@@ -26,6 +28,7 @@
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_record_commodity_step_one.xml" value="0.33" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_record_commodity_step_two.xml" value="0.33" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_register.xml" value="0.22" />
+        <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/fragment_transaction_landing.xml" value="0.22" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/item_exposed_dropdown_menu.xml" value="0.22830269345874304" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/item_farmer.xml" value="0.33" />
         <entry key="..\:/Users/LENOVO/Desktop/danova/play_ground/FruitCollector/app/src/main/res/layout/item_fruit.xml" value="0.33" />
