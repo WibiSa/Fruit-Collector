@@ -29,7 +29,7 @@
             android:layout_height="14dp"
             android:alpha="0.75"
             android:src="@drawable/ic_user"
-            app:layout_constraintStart_toStartOf="@id/tv_fruit_name"
+            app:layout_constraintStart_toStartOf="@id/tv_fruit_name_and_grade"
             app:layout_constraintTop_toTopOf="@id/tv_farmer_name"
             tools:ignore="ContentDescription" />
 
@@ -38,8 +38,8 @@
             android:layout_width="14dp"
             android:layout_height="14dp"
             android:src="@drawable/ic_calender"
-            app:layout_constraintStart_toStartOf="@id/tv_fruit_name"
-            app:layout_constraintTop_toTopOf="@id/tv_date"
+            app:layout_constraintStart_toStartOf="@id/tv_fruit_name_and_grade"
+            app:layout_constraintTop_toTopOf="@id/tv_harvest_date"
             app:tint="@color/grey"
             tools:ignore="ContentDescription" />
 
@@ -51,21 +51,21 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toEndOf="@id/img_user"
-            app:layout_constraintTop_toBottomOf="@id/tv_fruit_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_fruit_name_and_grade"
             tools:text="Budi" />
 
         <TextView
-            android:id="@+id/tv_fruit_name"
+            android:id="@+id/tv_fruit_name_and_grade"
             style="@style/Poppins.Subtitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             app:layout_constraintStart_toEndOf="@id/img_begin"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Manggis" />
+            tools:text="Manggis (AAA)" />
 
         <TextView
-            android:id="@+id/tv_date"
+            android:id="@+id/tv_harvest_date"
             style="@style/Poppins.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,7 +73,19 @@
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toEndOf="@id/img_calender"
             app:layout_constraintTop_toBottomOf="@id/tv_farmer_name"
-            tools:text="10-10-2022" />
+            tools:text="Tanggal panen: 10-10-2022" />
+
+        <TextView
+            android:id="@+id/tv_stock"
+            style="@style/Poppins.Subtitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/img_calender"
+            app:layout_constraintTop_toBottomOf="@id/tv_harvest_date"
+            tools:text="Stok: 100 Kg" />
 
         <TextView
             android:id="@+id/tv_validation_status"
@@ -88,4 +100,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>

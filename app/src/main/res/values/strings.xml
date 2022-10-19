@@ -34,4 +34,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="customer">Pelanggan</string>
     <string name="create_transaction">Buat Transaksi</string>
+    <string name="price_per_kg">Harga %d / Kg</string>
+    <string name="fruit_name_and_grade">%1$s (%2$s)</string>
+    <string name="harvest_date_with_date">Tanggal panen: %s</string>
+    <string name="stock_with_value">Stok: %d Kg</string>
 </resources>

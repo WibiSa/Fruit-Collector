@@ -94,12 +94,15 @@
         <action
             android:id="@+id/action_transactionLanding_to_createTransactionWithFarmer"
             app:destination="@id/createTransactionWithFarmer" />
+        <action
+            android:id="@+id/action_transactionLanding_to_createTransactionWithCustomer"
+            app:destination="@id/createTransactionWithCustomer" />
     </fragment>
     <navigation android:id="@+id/createTransactionWithFarmer"
         app:startDestination="@id/createFarmerTransactionStepOne">
         <fragment
             android:id="@+id/createFarmerTransactionStepOne"
-            android:name="com.wibisa.fruitcollector.ui.transaction.framertransaction.CreateFarmerTransactionStepOneFragment"
+            android:name="com.wibisa.fruitcollector.ui.transaction.farmertransaction.CreateFarmerTransactionStepOneFragment"
             android:label="fragment_create_farmer_transaction_step_one"
             tools:layout="@layout/fragment_create_farmer_transaction_step_one">
             <action
@@ -108,8 +111,25 @@
         </fragment>
         <fragment
             android:id="@+id/createFarmerTransactionStepTwo"
-            android:name="com.wibisa.fruitcollector.ui.transaction.framertransaction.CreateFarmerTransactionStepTwoFragment"
+            android:name="com.wibisa.fruitcollector.ui.transaction.farmertransaction.CreateFarmerTransactionStepTwoFragment"
             android:label="fragment_create_farmer_transaction_step_two"
             tools:layout="@layout/fragment_create_farmer_transaction_step_two" />
+    </navigation>
+    <navigation android:id="@+id/createTransactionWithCustomer"
+        app:startDestination="@id/createCustomerTransactionStepOne">
+        <fragment
+            android:id="@+id/createCustomerTransactionStepTwo"
+            android:name="com.wibisa.fruitcollector.ui.transaction.customertransaction.CreateCustomerTransactionStepTwoFragment"
+            android:label="fragment_create_customer_transaction_step_two"
+            tools:layout="@layout/fragment_create_customer_transaction_step_two" />
+        <fragment
+            android:id="@+id/createCustomerTransactionStepOne"
+            android:name="com.wibisa.fruitcollector.ui.transaction.customertransaction.CreateCustomerTransactionStepOneFragment"
+            android:label="fragment_create_customer_transaction_step_one"
+            tools:layout="@layout/fragment_create_customer_transaction_step_one">
+            <action
+                android:id="@+id/action_createCustomerTransactionStepOne_to_createCustomerTransactionStepTwo"
+                app:destination="@id/createCustomerTransactionStepTwo" />
+        </fragment>
     </navigation>
 </navigation>

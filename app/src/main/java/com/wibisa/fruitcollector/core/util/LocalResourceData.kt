@@ -39,12 +39,133 @@ class LocalResourceData(context: Context) {
     )
 
     val dummyCommodities = listOf(
-        Commodity("1", "Manggis", "Budi", "04-06-2022", false),
-        Commodity("2", "Manggis", "Sutris", "04-06-2022", true),
-        Commodity("3", "Rambutan", "Budi", "04-05-2022", false),
-        Commodity("4", "Manggis", "Beni", "04-04-2022", true),
-        Commodity("5", "Durian", "Zulkifli", "04-03-2022", true)
+        Commodity(
+            "1",
+            "Manggis",
+            "Budi",
+            "04-06-2022",
+            isValid = false,
+            grade = null,
+            harvestDate = null,
+            stock = null
+        ),
+        Commodity(
+            "2",
+            "Manggis",
+            "Sutris",
+            "04-06-2022",
+            isValid = true,
+            grade = null,
+            harvestDate = null,
+            stock = null
+        ),
+        Commodity(
+            "3",
+            "Rambutan",
+            "Budi",
+            "04-05-2022",
+            isValid = true,
+            grade = null,
+            harvestDate = null,
+            stock = null
+        ),
+        Commodity(
+            "4",
+            "Manggis",
+            "Beni",
+            "04-04-2022",
+            isValid = true,
+            grade = null,
+            harvestDate = null,
+            stock = null
+        ),
+        Commodity(
+            "5",
+            "Durian",
+            "Zulkifli",
+            "04-03-2022",
+            isValid = true,
+            grade = null,
+            harvestDate = null,
+            stock = null
+        )
     )
 
-    val dummyFruitGrades = listOf("A","AA","AAA")
+    val dummyCommoditiesForTransFarmer = listOf(
+        Commodity(
+            "1",
+            "Manggis",
+            "Budi",
+            "04-06-2022",
+            isValid = true,
+            grade = "AAA",
+            harvestDate = "02-10-2022",
+            stock = 150
+        ),
+        Commodity(
+            "2",
+            "Manggis",
+            "Sutris",
+            "04-06-2022",
+            isValid = true,
+            grade = "AAA",
+            harvestDate = "02-10-2022",
+            stock = 50
+        ),
+        Commodity(
+            "3",
+            "Rambutan",
+            "Budi",
+            "04-05-2022",
+            isValid = true,
+            grade = "A",
+            harvestDate = "02-10-2022",
+            stock = 95
+        ),
+        Commodity(
+            "4",
+            "Manggis",
+            "Beni",
+            "04-04-2022",
+            isValid = true,
+            grade = "AA",
+            harvestDate = "02-10-2022",
+            stock = 80
+        )
+    )
+
+    val dummyTransFarmer = listOf(
+        TransactionFarmerCommodity(
+            "1",
+            "Manggis",
+            "Budi",
+            "04-04-2022",
+            grade = "AA",
+            harvestDate = "02-10-2022",
+            stock = 80,
+            pricePerKg = 16000
+        ),
+        TransactionFarmerCommodity(
+            "2",
+            "Manggis",
+            "Beni",
+            "04-04-2022",
+            grade = "AA",
+            harvestDate = "02-10-2022",
+            stock = 80,
+            pricePerKg = 16000
+        ),
+        TransactionFarmerCommodity(
+            "3",
+            "Manggis",
+            "Carlie",
+            "04-04-2022",
+            grade = "AA",
+            harvestDate = "02-10-2022",
+            stock = 80,
+            pricePerKg = 16000
+        )
+    )
+
+    val dummyFruitGrades = listOf("A", "AA", "AAA")
 }

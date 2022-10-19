@@ -1,4 +1,4 @@
-package com.wibisa.fruitcollector.ui.transaction.framertransaction
+package com.wibisa.fruitcollector.ui.transaction.customertransaction
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,19 +8,20 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.wibisa.fruitcollector.R
-import com.wibisa.fruitcollector.adapter.CommodityAdapter
-import com.wibisa.fruitcollector.adapter.CommodityListener
+import com.wibisa.fruitcollector.adapter.TransCustomerCommodityAdapter
+import com.wibisa.fruitcollector.adapter.TransCustomerCommodityListener
 import com.wibisa.fruitcollector.core.util.LocalResourceData
+import com.wibisa.fruitcollector.databinding.FragmentCreateCustomerTransactionStepOneBinding
 import com.wibisa.fruitcollector.databinding.FragmentCreateFarmerTransactionStepOneBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class CreateFarmerTransactionStepOneFragment : Fragment() {
+class CreateCustomerTransactionStepOneFragment : Fragment() {
 
-    private lateinit var binding: FragmentCreateFarmerTransactionStepOneBinding
-    private lateinit var adapter: CommodityAdapter
+    private lateinit var binding: FragmentCreateCustomerTransactionStepOneBinding
+    private lateinit var adapter: TransCustomerCommodityAdapter
     private lateinit var localResourceData: LocalResourceData
     private val mainFlowNavController: NavController? by lazy { view?.findNavController() }
 
@@ -29,7 +30,8 @@ class CreateFarmerTransactionStepOneFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentCreateFarmerTransactionStepOneBinding.inflate(inflater, container, false)
+        binding =
+            FragmentCreateCustomerTransactionStepOneBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,19 +45,20 @@ class CreateFarmerTransactionStepOneFragment : Fragment() {
 
         localResourceData = LocalResourceData(requireContext())
 
-        binding.btnBack.setOnClickListener { mainFlowNavController?.popBackStack() }
+        binding.appbar.setNavigationOnClickListener { mainFlowNavController?.popBackStack() }
 
-        // TODO: adapter rv! and interaction
-        fruitCommodityAdapterSetup()
+        transCustomerCommodityAdapterSetup()
     }
 
-    private fun fruitCommodityAdapterSetup() {
-        adapter = CommodityAdapter(clickListener = CommodityListener {
-            // TODO: pass data to step two!
-            mainFlowNavController?.navigate(R.id.action_createFarmerTransactionStepOne_to_createFarmerTransactionStepTwo)
-        })
-        binding.rvFruitCommodity.adapter = adapter
-        val commodities = localResourceData.dummyCommodities
+    private fun transCustomerCommodityAdapterSetup() {
+        adapter = TransCustomerCommodityAdapter(
+            context = requireContext(),
+            clickListener = TransCustomerCommodityListener {
+                // TODO: pass data to step two!
+                mainFlowNavController?.navigate(R.id.action_createCustomerTransactionStepOne_to_createCustomerTransactionStepTwo)
+            })
+        binding.rvAvailableCommodity.adapter = adapter
+        val commodities = localResourceData.dummyTransFarmer
         CoroutineScope(Dispatchers.Main).launch {
             binding.loadingIndicator.show()
             delay(1500)
@@ -63,5 +66,4 @@ class CreateFarmerTransactionStepOneFragment : Fragment() {
             binding.loadingIndicator.hide()
         }
     }
-
 }

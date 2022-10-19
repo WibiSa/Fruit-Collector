@@ -34,7 +34,7 @@ class TransactionLandingFragment : Fragment() {
         }
 
         binding.cardTransactionWithCustomer.setOnClickListener {
-            // TODO:
+            mainFlowNavController?.navigate(R.id.action_transactionLanding_to_createTransactionWithCustomer)
         }
     }
 }

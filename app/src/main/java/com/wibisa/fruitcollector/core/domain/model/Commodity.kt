@@ -5,6 +5,10 @@ data class Commodity(
     val commodityName: String,
     val farmerName: String,
     val recordDate: String,
-    val isValid: Boolean
+    val grade: String?,
+    val harvestDate: String?,
+    val stock: Int?,
+    val isValid: Boolean,
+
     // TODO: masih ada data lain disini!
 )
