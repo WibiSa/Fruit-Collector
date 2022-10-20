@@ -9,21 +9,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.wibisa.fruitcollector.R
-import com.wibisa.fruitcollector.core.util.hideKeyboard
-import com.wibisa.fruitcollector.core.util.isNotNullOrEmpty
-import com.wibisa.fruitcollector.core.util.showOrHideHint
+import com.wibisa.fruitcollector.core.domain.model.InputLogin
+import com.wibisa.fruitcollector.core.domain.model.UserPreferences
+import com.wibisa.fruitcollector.core.util.*
 import com.wibisa.fruitcollector.databinding.FragmentLoginBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.wibisa.fruitcollector.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+    private val viewModel: LoginViewModel by viewModels()
     private val authNavController: NavController? by lazy { view?.findNavController() }
     private val baseNavController: NavController? by lazy { activity?.findNavController(R.id.base_nav_host) }
 
@@ -40,6 +46,8 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         componentUiSetup()
+
+        observeLoginUiState()
     }
 
     private fun componentUiSetup() {
@@ -61,20 +69,53 @@ class LoginFragment : Fragment() {
             hideKeyboard()
 
             if (isValid)
-                CoroutineScope(Dispatchers.Main).launch {
-                    binding.loadingIndicator.show()
-                    delay(1500)
-                    binding.loadingIndicator.hide()
-                    login()
-                }
+                login()
         }
     }
 
     private fun login() {
-//        val email = binding.tfEmail.text.toString().trim()
-//        val password = binding.tfPassword.text.toString().trim()
-//        val message = "$email, $password"
+        val email = binding.tfEmail.text.toString().trim()
+        val password = binding.tfPassword.text.toString().trim()
 
-        baseNavController?.navigate(R.id.action_baseAuthentication_to_baseMainFlow)
+        val inputLogin = InputLogin(email, password)
+        viewModel.login(inputLogin)
+    }
+
+    private fun observeLoginUiState() {
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.loginUiState.collect { loginUi ->
+                    when (loginUi) {
+                        is ApiResult.Success -> {
+                            binding.loadingIndicator.hide()
+                            val userPreferences = UserPreferences(
+                                name = loginUi.data.name,
+                                userId = loginUi.data.id,
+                                token = loginUi.data.token
+                            )
+                            viewModel.saveUserPreferences(userPreferences)
+                            delay(1000)
+                            baseNavController?.navigate(R.id.action_baseAuthentication_to_baseMainFlow)
+                            viewModel.loginCompleted()
+                        }
+                        is ApiResult.Loading -> {
+                            binding.loadingIndicator.show()
+                        }
+                        is ApiResult.Error -> {
+                            binding.loadingIndicator.hide()
+                            // TODO: code error handling here!
+                            requireContext().showToast(
+                                getString(
+                                    R.string.something_went_wrong_with_message,
+                                    loginUi.message
+                                )
+                            )
+                            viewModel.loginCompleted()
+                        }
+                        else -> {}
+                    }
+                }
+            }
+        }
     }
 }

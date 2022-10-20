@@ -11,7 +11,9 @@ import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.core.util.hide
 import com.wibisa.fruitcollector.core.util.show
 import com.wibisa.fruitcollector.databinding.FragmentBaseMainFlowBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BaseMainFlowFragment : Fragment() {
 
     private lateinit var binding: FragmentBaseMainFlowBinding

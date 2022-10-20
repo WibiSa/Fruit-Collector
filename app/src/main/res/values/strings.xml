@@ -38,4 +38,7 @@
     <string name="fruit_name_and_grade">%1$s (%2$s)</string>
     <string name="harvest_date_with_date">Tanggal panen: %s</string>
     <string name="stock_with_value">Stok: %d Kg</string>
+
+    <string name="something_went_wrong_with_message">Terjadi kesalahan: %s</string>
+    <string name="welcome_user">Halo, %s</string>
 </resources>
