@@ -5,24 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.adapter.FarmersAdapter
 import com.wibisa.fruitcollector.adapter.FarmersListener
-import com.wibisa.fruitcollector.core.util.LocalResourceData
+import com.wibisa.fruitcollector.core.util.ApiResult
+import com.wibisa.fruitcollector.core.util.showToast
 import com.wibisa.fruitcollector.databinding.FragmentFarmersBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
+import com.wibisa.fruitcollector.viewmodel.FarmersViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class FarmersFragment : Fragment() {
 
     private lateinit var binding: FragmentFarmersBinding
     private lateinit var adapter: FarmersAdapter
-    private lateinit var localResourceData: LocalResourceData
     private val mainFlowNavController: NavController? by lazy { view?.findNavController() }
+    private val viewModel: FarmersViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,10 +42,13 @@ class FarmersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         componentUiSetup()
+
+        observeUserPreferencesForGetFarmers()
+
+        observeFarmersUiState()
     }
 
     private fun componentUiSetup() {
-        localResourceData = LocalResourceData(requireContext())
 
         binding.btnBack.setOnClickListener { mainFlowNavController?.popBackStack() }
 
@@ -49,16 +57,48 @@ class FarmersFragment : Fragment() {
 
     private fun farmersAdapterSetup() {
         adapter = FarmersAdapter(clickListener = FarmersListener {
-            // TODO: pass data to detail
-            mainFlowNavController?.navigate(R.id.action_farmers_to_farmerDetails)
+            val destination = FarmersFragmentDirections.actionFarmersToFarmerDetails(it)
+            mainFlowNavController?.navigate(destination)
         })
         binding.rvFarmers.adapter = adapter
-        val farmers = localResourceData.dummyFarmers
-        CoroutineScope(Dispatchers.Main).launch {
-            binding.loadingIndicator.show()
-            delay(1500)
-            adapter.submitList(farmers)
-            binding.loadingIndicator.hide()
+    }
+
+    private fun observeUserPreferencesForGetFarmers() {
+        viewModel.userPreferences.observe(viewLifecycleOwner) {
+            viewModel.getFarmers(it.token)
         }
     }
+
+    private fun observeFarmersUiState() {
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.farmersUiState.collect { ui ->
+                    when (ui) {
+                        is ApiResult.Success -> {
+                            binding.loadingIndicator.hide()
+                            adapter.submitList(ui.data)
+                            viewModel.getFarmersCompleted()
+                        }
+                        is ApiResult.Loading -> {
+                            binding.loadingIndicator.show()
+                        }
+                        is ApiResult.Error -> {
+                            binding.loadingIndicator.hide()
+                            // TODO: code error handling here!
+                            requireContext().showToast(
+                                getString(
+                                    R.string.something_went_wrong_with_message,
+                                    ui.message
+                                )
+                            )
+                            viewModel.getFarmersCompleted()
+                        }
+                        else -> {}
+                    }
+                }
+            }
+        }
+    }
+
+    // TODO: jika list farmer kosong, belum ada state view!
 }

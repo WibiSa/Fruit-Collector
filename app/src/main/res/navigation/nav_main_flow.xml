@@ -49,7 +49,11 @@
         android:id="@+id/farmerDetails"
         android:name="com.wibisa.fruitcollector.ui.farmer.FarmerDetailsFragment"
         android:label="fragment_farmer_details"
-        tools:layout="@layout/fragment_farmer_details" />
+        tools:layout="@layout/fragment_farmer_details" >
+        <argument
+            android:name="farmer"
+            app:argType="com.wibisa.fruitcollector.core.domain.model.Farmer" />
+    </fragment>
     <navigation android:id="@+id/recordCommodityGraph"
         app:startDestination="@id/recordCommodityStepOne">
         <fragment

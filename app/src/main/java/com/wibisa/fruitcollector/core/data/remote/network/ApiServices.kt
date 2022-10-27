@@ -1,12 +1,7 @@
 package com.wibisa.fruitcollector.core.data.remote.network
 
-import com.wibisa.fruitcollector.core.data.remote.response.LoginNetwork
-import com.wibisa.fruitcollector.core.data.remote.response.LogoutNetwork
-import com.wibisa.fruitcollector.core.data.remote.response.RegisterNetwork
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Header
-import retrofit2.http.POST
+import com.wibisa.fruitcollector.core.data.remote.response.*
+import retrofit2.http.*
 
 interface ApiServices {
 
@@ -31,4 +26,20 @@ interface ApiServices {
     suspend fun logout(
         @Header("Authorization") token: String
     ): LogoutNetwork
+
+    @FormUrlEncoded
+    @POST("api/collector/farmer")
+    suspend fun addFarmer(
+        @Header("Authorization") token: String,
+        @Field("name") name: String,
+        @Field("land_location") landLocation: String,
+        @Field("number_tree") numberOfTree: Int,
+        @Field("estimation_production") estimationProduction: Int,
+        @Field("land_size") landSize: Float
+    ): AddFarmerNetwork
+
+    @GET("api/collector/farmer")
+    suspend fun getFarmers(
+        @Header("Authorization") token: String
+    ): FarmersNetwork
 }

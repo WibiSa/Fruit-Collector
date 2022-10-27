@@ -24,11 +24,11 @@ class LocalResourceData(context: Context) {
         ImageBanner(ContextCompat.getDrawable(context, R.drawable.banner_sample)!!)
     )
 
-    val dummyFarmers = listOf(
-        Farmer("1", "Budi Suharto"),
-        Farmer("2", "Budi Harto"),
-        Farmer("3", "Cipta Rama"),
-        Farmer("4", "Suharto Aji")
+    val dummyFarmers = listOf<Farmer>(
+//        Farmer("1", "Budi Suharto"),
+//        Farmer("2", "Budi Harto"),
+//        Farmer("3", "Cipta Rama"),
+//        Farmer("4", "Suharto Aji")
     )
 
     val dummyFruits = listOf(

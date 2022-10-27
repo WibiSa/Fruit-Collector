@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
+import com.wibisa.fruitcollector.core.domain.model.Farmer
 import com.wibisa.fruitcollector.core.util.hideKeyboard
 import com.wibisa.fruitcollector.core.util.showToast
 import com.wibisa.fruitcollector.databinding.FragmentFarmerDetailsBinding
@@ -14,12 +16,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.nio.file.Files.delete
 
 class FarmerDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentFarmerDetailsBinding
     private val mainFlowNavController: NavController? by lazy { view?.findNavController() }
+    private val args: FarmerDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,12 +59,16 @@ class FarmerDetailsFragment : Fragment() {
         binding.btnDelete.setOnClickListener { deleteFarmer() }
 
         // set initial farmer profile
+        bindFarmer(args.farmer)
+    }
+
+    private fun bindFarmer(farmer: Farmer) {
         binding.apply {
-            tfName.setText("Budi")
-            tfLandArea.setText("1.7")
-            tfNumberOfTree.setText("1300")
-            tfProductionEstimate.setText("5000")
-            tfLandLocation.setText("Narmada")
+            tfName.setText(farmer.name)
+            tfLandArea.setText(farmer.landSize.toString())
+            tfNumberOfTree.setText(farmer.numberTree.toString())
+            tfProductionEstimate.setText(farmer.estimationProduction.toString())
+            tfLandLocation.setText(farmer.landLocation)
         }
     }
 
