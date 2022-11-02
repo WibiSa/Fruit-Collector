@@ -42,4 +42,27 @@ interface ApiServices {
     suspend fun getFarmers(
         @Header("Authorization") token: String
     ): FarmersNetwork
+
+    @FormUrlEncoded
+    @PUT("api/collector/farmer/{id_farmer}")
+    suspend fun editFarmer(
+        @Header("Authorization") token: String,
+        @Path("id_farmer") idFarmer: String,
+        @Field("name") name: String,
+        @Field("land_location") landLocation: String,
+        @Field("number_tree") numberOfTree: Int,
+        @Field("estimation_production") estimationProduction: Int,
+        @Field("land_size") landSize: Float
+    ): EditFarmerNetwork
+
+    @DELETE("api/collector/farmer/{id_farmer}")
+    suspend fun deleteFarmer(
+        @Header("Authorization") token: String,
+        @Path("id_farmer") idFarmer: String
+    ): DeleteFarmerNetwork
+
+    @GET("api/collector/fruit")
+    suspend fun getFruits(
+        @Header("Authorization") token: String
+    ): FruitsNetwork
 }
