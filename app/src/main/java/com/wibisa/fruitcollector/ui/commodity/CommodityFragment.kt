@@ -1,28 +1,32 @@
 package com.wibisa.fruitcollector.ui.commodity
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.adapter.CommodityAdapter
 import com.wibisa.fruitcollector.adapter.CommodityListener
-import com.wibisa.fruitcollector.core.util.LocalResourceData
+import com.wibisa.fruitcollector.core.util.ApiResult
 import com.wibisa.fruitcollector.core.util.showToast
 import com.wibisa.fruitcollector.databinding.FragmentCommodityBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
+import com.wibisa.fruitcollector.viewmodel.CommodityViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class CommodityFragment : Fragment() {
 
     private lateinit var binding: FragmentCommodityBinding
     private lateinit var adapter: CommodityAdapter
-    private lateinit var localResourceData: LocalResourceData
+    private val viewModel: CommodityViewModel by viewModels()
     private val mainFlowNavController: NavController? by lazy { view?.findNavController() }
 
     override fun onCreateView(
@@ -38,10 +42,13 @@ class CommodityFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         componentUiSetup()
+
+        observeUserPreferencesForGetCommodities()
+
+        observeCommoditiesUiState()
     }
 
     private fun componentUiSetup() {
-        localResourceData = LocalResourceData(requireContext())
 
         binding.btnBack.setOnClickListener { mainFlowNavController?.popBackStack() }
 
@@ -54,12 +61,42 @@ class CommodityFragment : Fragment() {
             mainFlowNavController?.navigate(R.id.action_commodity_to_commodityDetails)
         })
         binding.rvFruitCommodity.adapter = adapter
-        val commodities = localResourceData.dummyCommodities
-        CoroutineScope(Dispatchers.Main).launch {
-            binding.loadingIndicator.show()
-            delay(1500)
-            adapter.submitList(commodities)
-            binding.loadingIndicator.hide()
+    }
+
+    private fun observeUserPreferencesForGetCommodities() {
+        viewModel.userPreferences.observe(viewLifecycleOwner) {
+            viewModel.getCommodity(it.token)
+        }
+    }
+
+    private fun observeCommoditiesUiState() {
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.commoditiesUiState.collect { ui ->
+                    when (ui) {
+                        is ApiResult.Success -> {
+                            binding.loadingIndicator.hide()
+                            adapter.submitList(ui.data)
+                            viewModel.getCommodityCompleted()
+                        }
+                        is ApiResult.Loading -> {
+                            binding.loadingIndicator.show()
+                        }
+                        is ApiResult.Error -> {
+                            binding.loadingIndicator.hide()
+                            // TODO: code error handling here!
+                            requireContext().showToast(
+                                getString(
+                                    R.string.something_went_wrong_with_message,
+                                    ui.message
+                                )
+                            )
+                            viewModel.getCommodityCompleted()
+                        }
+                        else -> {}
+                    }
+                }
+            }
         }
     }
 }

@@ -7,9 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.wibisa.fruitcollector.core.data.repository.CommodityRepository
 import com.wibisa.fruitcollector.core.data.repository.FarmerRepository
 import com.wibisa.fruitcollector.core.data.repository.UserRepository
-import com.wibisa.fruitcollector.core.domain.model.Farmer
-import com.wibisa.fruitcollector.core.domain.model.Fruit
-import com.wibisa.fruitcollector.core.domain.model.UserPreferences
+import com.wibisa.fruitcollector.core.domain.model.*
 import com.wibisa.fruitcollector.core.util.ApiResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -26,9 +24,9 @@ class RecordCommodityViewModel @Inject constructor(
     private val commodityRepository: CommodityRepository
 ) : ViewModel() {
 
-    val farmerId = MutableLiveData<String>(null)
+    val farmerId = MutableLiveData<String?>(null)
 
-    val fruitId = MutableLiveData<String>(null)
+    val fruitId = MutableLiveData<String?>(null)
 
     private val _userPreferences = MutableLiveData<UserPreferences>()
     val userPreferences: LiveData<UserPreferences>
@@ -39,6 +37,9 @@ class RecordCommodityViewModel @Inject constructor(
 
     private val _fruitsUiState = MutableStateFlow<ApiResult<List<Fruit>>>(ApiResult.Empty)
     val fruitsUiState: StateFlow<ApiResult<List<Fruit>>> = _fruitsUiState.asStateFlow()
+
+    private val _addCommodityUiState = MutableStateFlow<ApiResult<String>>(ApiResult.Empty)
+    val addCommodityUiState: StateFlow<ApiResult<String>> = _addCommodityUiState.asStateFlow()
 
     init {
         viewModelScope.launch {
@@ -68,5 +69,22 @@ class RecordCommodityViewModel @Inject constructor(
 
     fun getFruitsCompleted() {
         _fruitsUiState.value = ApiResult.Empty
+    }
+
+    fun addCommodity(token: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val input = InputAddCommodity(
+                idFarmer = farmerId.value!!,
+                idFruit = fruitId.value!!
+            )
+
+            _addCommodityUiState.value = ApiResult.Loading
+            val response = commodityRepository.addCommodity(token, input)
+            _addCommodityUiState.value = response
+        }
+    }
+
+    fun addCommodityCompleted() {
+        _addCommodityUiState.value = ApiResult.Empty
     }
 }

@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.wibisa.fruitcollector.R
-import com.wibisa.fruitcollector.adapter.CommodityListener
 import com.wibisa.fruitcollector.adapter.TransFarmerCommodityAdapter
+import com.wibisa.fruitcollector.adapter.CommodityTransListener
 import com.wibisa.fruitcollector.core.util.LocalResourceData
 import com.wibisa.fruitcollector.databinding.FragmentCreateFarmerTransactionStepOneBinding
 import kotlinx.coroutines.CoroutineScope
@@ -51,7 +51,7 @@ class CreateFarmerTransactionStepOneFragment : Fragment() {
     private fun fruitCommodityAdapterSetup() {
         adapter = TransFarmerCommodityAdapter(
             context = requireContext(),
-            clickListener = CommodityListener {
+            clickListener = CommodityTransListener {
                 // TODO: pass data to step two!
                 mainFlowNavController?.navigate(R.id.action_createFarmerTransactionStepOne_to_createFarmerTransactionStepTwo)
             })

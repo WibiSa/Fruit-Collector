@@ -70,7 +70,7 @@ class UserRepository @Inject constructor(
             val response = api.logout(token.tokenFormat())
             return when (response.meta.status) {
                 API_RESPONSE_SUCCESS -> {
-                    ApiResult.Success(response.data.asDomainModel())
+                    ApiResult.Success(response.asDomainModel())
                 }
                 API_RESPONSE_FAILED -> {
                     ApiResult.Error(response.meta.message)

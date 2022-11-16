@@ -19,9 +19,6 @@ import com.wibisa.fruitcollector.core.util.showToast
 import com.wibisa.fruitcollector.databinding.FragmentRecordCommodityStepTwoBinding
 import com.wibisa.fruitcollector.viewmodel.RecordCommodityViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -49,6 +46,8 @@ class RecordCommodityStepTwoFragment : Fragment() {
         observeUserPreferencesForGetFruits()
 
         observeFruitsUiState()
+
+        observeAddCommodityUiState()
     }
 
     private fun componentUiSetup() {
@@ -56,14 +55,7 @@ class RecordCommodityStepTwoFragment : Fragment() {
         binding.btnBack.setOnClickListener { mainFlowNavController?.popBackStack() }
 
         binding.btnSave.setOnClickListener {
-            // TODO: business logic!
-            CoroutineScope(Dispatchers.Main).launch {
-                binding.loadingIndicator.show()
-                delay(1500)
-                binding.loadingIndicator.hide()
-                requireContext().showToast("Berhasil disimpan")
-                mainFlowNavController?.navigate(R.id.action_global_homeScreen)
-            }
+            observeUserPreferencesForAddCommodity()
         }
 
         fruitsAdapterSetup()
@@ -71,7 +63,6 @@ class RecordCommodityStepTwoFragment : Fragment() {
 
     private fun fruitsAdapterSetup() {
         adapter = FruitsAdapter(clickListener = FruitsListener {
-            // TODO: pass data with viewModel navGraph scope
             viewModel.fruitId.value = it.id
         })
         binding.rvFruits.adapter = adapter
@@ -106,6 +97,54 @@ class RecordCommodityStepTwoFragment : Fragment() {
                                 )
                             )
                             viewModel.getFruitsCompleted()
+                        }
+                        else -> {}
+                    }
+                }
+            }
+        }
+    }
+
+    private fun observeUserPreferencesForAddCommodity() {
+        viewModel.userPreferences.observe(viewLifecycleOwner) {
+            val isValid = viewModel.fruitId.value != null && viewModel.farmerId.value != null
+            if (isValid) {
+                viewModel.addCommodity(it.token)
+            } else {
+                requireContext().showToast(
+                    getString(
+                        R.string.something_went_wrong_with_message,
+                        "Input belum benar."
+                    )
+                )
+            }
+        }
+    }
+
+    private fun observeAddCommodityUiState() {
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.addCommodityUiState.collect { ui ->
+                    when (ui) {
+                        is ApiResult.Success -> {
+                            binding.loadingIndicator.hide()
+                            mainFlowNavController?.navigate(R.id.action_global_homeScreen)
+                            requireContext().showToast(ui.data)
+                            viewModel.addCommodityCompleted()
+                        }
+                        is ApiResult.Loading -> {
+                            binding.loadingIndicator.show()
+                        }
+                        is ApiResult.Error -> {
+                            binding.loadingIndicator.hide()
+                            // TODO: code error handling here!
+                            requireContext().showToast(
+                                getString(
+                                    R.string.something_went_wrong_with_message,
+                                    ui.message
+                                )
+                            )
+                            viewModel.addCommodityCompleted()
                         }
                         else -> {}
                     }

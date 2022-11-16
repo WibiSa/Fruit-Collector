@@ -10,5 +10,5 @@ data class Commodity(
     val stock: Int?,
     val isValid: Boolean,
 
-    // TODO: masih ada data lain disini!
+    // masih ada data lain disini!
 )

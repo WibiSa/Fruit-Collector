@@ -4,12 +4,12 @@ import com.wibisa.fruitcollector.core.domain.model.Logout
 
 data class LogoutNetwork(
     val meta: Meta,
-    val `data`: LogoutData
+    val `data`: Any?
 )
+//
+//data class LogoutData(
+//    val message: String
+//)
 
-data class LogoutData(
-    val message: String
-)
-
-fun LogoutData.asDomainModel(): Logout =
-    Logout(message = message)
+fun LogoutNetwork.asDomainModel(): Logout =
+    Logout(message = meta.message)

@@ -45,7 +45,7 @@ class CommodityDetailsFragment : Fragment() {
     private fun componentUiSetup() {
 
         binding.apply {
-            tvFarmerName.text = localResourceData.dummyFarmers[0].name
+            tvFarmerName.text = "Iman Syu"
             tvFruitName.text = localResourceData.dummyFruits[0].name
         }
 

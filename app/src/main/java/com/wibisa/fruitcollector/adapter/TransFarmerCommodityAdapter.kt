@@ -14,7 +14,7 @@ import com.wibisa.fruitcollector.databinding.ItemTransFarmerCommodityBinding
 
 class TransFarmerCommodityAdapter(
     private val context: Context,
-    private val clickListener: CommodityListener
+    private val clickListener: CommodityTransListener
 ) :
     ListAdapter<Commodity, TransFarmerCommodityAdapter.CommodityViewHolder>(COMPARATOR) {
 
@@ -36,7 +36,7 @@ class TransFarmerCommodityAdapter(
 
     inner class CommodityViewHolder(private val binding: ItemTransFarmerCommodityBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Commodity, clickListener: CommodityListener) {
+        fun bind(item: Commodity, clickListener: CommodityTransListener) {
             binding.apply {
                 val fruitAndGrade =
                     context.getString(R.string.fruit_name_and_grade, item.commodityName, item.grade)
@@ -61,4 +61,8 @@ class TransFarmerCommodityAdapter(
                 oldItem == newItem
         }
     }
+}
+
+class CommodityTransListener(val clickListener: (commodity: Commodity) -> Unit) {
+    fun onClick(commodity: Commodity) = clickListener(commodity)
 }

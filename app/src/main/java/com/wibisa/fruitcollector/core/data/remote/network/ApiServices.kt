@@ -65,4 +65,17 @@ interface ApiServices {
     suspend fun getFruits(
         @Header("Authorization") token: String
     ): FruitsNetwork
+
+    @FormUrlEncoded
+    @POST("api/collector/comodity")
+    suspend fun addCommodity(
+        @Header("Authorization") token: String,
+        @Field("farmer_id") idFarmer: String,
+        @Field("fruit_id") idFruit: String
+    ): AddCommodityNetwork
+
+    @GET("api/collector/comodity")
+    suspend fun getCommodities(
+        @Header("Authorization") token: String
+    ): CommoditiesNetwork
 }

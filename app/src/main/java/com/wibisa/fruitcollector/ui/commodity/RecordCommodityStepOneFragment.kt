@@ -52,7 +52,6 @@ class RecordCommodityStepOneFragment : Fragment() {
 
         binding.btnBack.setOnClickListener {
             mainFlowNavController?.popBackStack()
-            // TODO: clear data from viewModel
         }
 
         farmersAdapterSetup()
@@ -60,9 +59,7 @@ class RecordCommodityStepOneFragment : Fragment() {
 
     private fun farmersAdapterSetup() {
         adapter = FarmersAdapter(clickListener = FarmersListener {
-            // TODO: save id farmer to viewModel
             viewModel.farmerId.value = it.id
-            // TODO: navigate to step 2
             mainFlowNavController?.navigate(R.id.action_recordCommodityStepOne_to_recordCommodityStepTwo)
         })
         binding.rvFarmers.adapter = adapter

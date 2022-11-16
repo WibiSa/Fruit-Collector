@@ -84,7 +84,7 @@ class HomeFragment : Fragment() {
                 viewModel.logoutUiState.collect { logoutUi ->
                     when (logoutUi) {
                         is ApiResult.Success -> {
-//                            binding.loadingIndicator.hide()
+                            binding.loadingIndicator.hide()
                             viewModel.clearUserPreferences()
                             baseNavController?.navigate(R.id.action_baseMainFlow_to_baseAuthentication)
                             viewModel.logoutCompleted()
@@ -92,10 +92,10 @@ class HomeFragment : Fragment() {
                             requireContext().showToast(message)
                         }
                         is ApiResult.Loading -> {
-//                            binding.loadingIndicator.show()
+                            binding.loadingIndicator.show()
                         }
                         is ApiResult.Error -> {
-//                            binding.loadingIndicator.hide()
+                            binding.loadingIndicator.hide()
                             // TODO: code error handling here!
                             requireContext().showToast(
                                 getString(
