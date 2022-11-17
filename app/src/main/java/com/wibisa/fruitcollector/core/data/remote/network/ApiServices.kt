@@ -78,4 +78,42 @@ interface ApiServices {
     suspend fun getCommodities(
         @Header("Authorization") token: String
     ): CommoditiesNetwork
+
+    @FormUrlEncoded
+    @PUT("/api/collector/comodity/{id_commodity}")
+    suspend fun editCommodity(
+        @Header("Authorization") token: String,
+        @Path("id_commodity") idCommodity: String,
+        @Field("blossoms_tree_date") blossomsTreeDate: String,
+        @Field("harvesting_date") harvestingDate: String,
+        @Field("fruit_grade") fruitGrade: String,
+        @Field("weight") stock: Int
+    ): EditCommodityNetwork
+
+    @PUT("api/collector/comodity/verify/{id_commodity}")
+    suspend fun verifyCommodity(
+        @Header("Authorization") token: String,
+        @Path("id_commodity") idCommodity: String
+    ): VerifyCommodityNetwork
+
+    @DELETE("/api/collector/comodity/{id_commodity}")
+    suspend fun deleteCommodity(
+        @Header("Authorization") token: String,
+        @Path("id_commodity") idCommodity: String
+    ): DeleteCommodityNetwork
+
+    @GET("api/collector/comodity/list/verified")
+    suspend fun getVerifiedCommodities(
+        @Header("Authorization") token: String
+    ): CommoditiesNetwork
+
+    @FormUrlEncoded
+    @POST("api/collector/transaction/farmer")
+    suspend fun createFarmerTransaction(
+        @Header("Authorization") token: String,
+        @Field("fruit_comodity_id") idCommodity: String,
+        @Field("weight") quantity: Int,
+        @Field("price") price: Int,
+        @Field("price_total") totalPrice: Int
+    ): AddFarmerTransactionNetwork
 }

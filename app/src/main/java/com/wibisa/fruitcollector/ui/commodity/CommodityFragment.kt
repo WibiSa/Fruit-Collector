@@ -57,8 +57,8 @@ class CommodityFragment : Fragment() {
 
     private fun fruitCommodityAdapterSetup() {
         adapter = CommodityAdapter(clickListener = CommodityListener {
-            // TODO: pass data to detail!
-            mainFlowNavController?.navigate(R.id.action_commodity_to_commodityDetails)
+            val destination = CommodityFragmentDirections.actionCommodityToCommodityDetails(it)
+            mainFlowNavController?.navigate(destination)
         })
         binding.rvFruitCommodity.adapter = adapter
     }

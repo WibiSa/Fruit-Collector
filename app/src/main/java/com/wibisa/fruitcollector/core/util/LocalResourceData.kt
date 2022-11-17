@@ -44,7 +44,7 @@ class LocalResourceData(context: Context) {
             "Manggis",
             "Budi",
             "04-06-2022",
-            isValid = false,
+            isValid = 0,
             grade = null,
             harvestDate = null,
             stock = null
@@ -54,7 +54,7 @@ class LocalResourceData(context: Context) {
             "Manggis",
             "Sutris",
             "04-06-2022",
-            isValid = true,
+            isValid = 1,
             grade = null,
             harvestDate = null,
             stock = null
@@ -64,7 +64,7 @@ class LocalResourceData(context: Context) {
             "Rambutan",
             "Budi",
             "04-05-2022",
-            isValid = true,
+            isValid = 1,
             grade = null,
             harvestDate = null,
             stock = null
@@ -74,7 +74,7 @@ class LocalResourceData(context: Context) {
             "Manggis",
             "Beni",
             "04-04-2022",
-            isValid = true,
+            isValid = 1,
             grade = null,
             harvestDate = null,
             stock = null
@@ -84,7 +84,7 @@ class LocalResourceData(context: Context) {
             "Durian",
             "Zulkifli",
             "04-03-2022",
-            isValid = true,
+            isValid = 1,
             grade = null,
             harvestDate = null,
             stock = null
@@ -97,7 +97,7 @@ class LocalResourceData(context: Context) {
             "Manggis",
             "Budi",
             "04-06-2022",
-            isValid = true,
+            isValid = 1,
             grade = "AAA",
             harvestDate = "02-10-2022",
             stock = 150
@@ -107,7 +107,7 @@ class LocalResourceData(context: Context) {
             "Manggis",
             "Sutris",
             "04-06-2022",
-            isValid = true,
+            isValid = 1,
             grade = "AAA",
             harvestDate = "02-10-2022",
             stock = 50
@@ -117,7 +117,7 @@ class LocalResourceData(context: Context) {
             "Rambutan",
             "Budi",
             "04-05-2022",
-            isValid = true,
+            isValid = 1,
             grade = "A",
             harvestDate = "02-10-2022",
             stock = 95
@@ -127,7 +127,7 @@ class LocalResourceData(context: Context) {
             "Manggis",
             "Beni",
             "04-04-2022",
-            isValid = true,
+            isValid = 1,
             grade = "AA",
             harvestDate = "02-10-2022",
             stock = 80

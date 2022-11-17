@@ -45,7 +45,7 @@ class TransFarmerCommodityAdapter(
                 tvHarvestDate.text =
                     context.getString(R.string.harvest_date_with_date, item.harvestDate)
                 tvStock.text = context.getString(R.string.stock_with_value, item.stock)
-                if (item.isValid) tvValidationStatus.show() else tvValidationStatus.hide()
+                if (item.isValid == 1) tvValidationStatus.show() else tvValidationStatus.hide()
             }
 
             itemView.setOnClickListener { clickListener.onClick(item) }

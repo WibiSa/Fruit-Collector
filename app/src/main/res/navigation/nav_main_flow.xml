@@ -89,7 +89,11 @@
         android:id="@+id/commodityDetails"
         android:name="com.wibisa.fruitcollector.ui.commodity.CommodityDetailsFragment"
         android:label="fragment_commodity_details"
-        tools:layout="@layout/fragment_commodity_details" />
+        tools:layout="@layout/fragment_commodity_details" >
+        <argument
+            android:name="commodity"
+            app:argType="com.wibisa.fruitcollector.core.domain.model.Commodity" />
+    </fragment>
     <fragment
         android:id="@+id/transactionLanding"
         android:name="com.wibisa.fruitcollector.ui.transaction.TransactionLandingFragment"

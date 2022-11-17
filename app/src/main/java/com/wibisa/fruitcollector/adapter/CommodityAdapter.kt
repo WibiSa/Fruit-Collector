@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.wibisa.fruitcollector.core.data.remote.response.Commodity
+import com.wibisa.fruitcollector.core.domain.model.Commodity
 import com.wibisa.fruitcollector.core.util.hide
 import com.wibisa.fruitcollector.core.util.show
 import com.wibisa.fruitcollector.databinding.ItemFruitCommodityBinding
@@ -29,10 +29,10 @@ class CommodityAdapter(private val clickListener: CommodityListener) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Commodity, clickListener: CommodityListener) {
             binding.apply {
-                tvFruitName.text = item.fruit.name
-                tvFarmerName.text = item.farmer.name
-                tvDate.text = item.harvestingDate
-                if (item.verified == 1) tvValidationStatus.show() else tvValidationStatus.hide()
+                tvFruitName.text = item.commodityName
+                tvFarmerName.text = item.farmerName
+                tvDate.text = item.harvestDate
+                if (item.isValid == 1) tvValidationStatus.show() else tvValidationStatus.hide()
             }
 
             itemView.setOnClickListener { clickListener.onClick(item) }

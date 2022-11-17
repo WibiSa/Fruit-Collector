@@ -41,4 +41,5 @@
 
     <string name="something_went_wrong_with_message">Terjadi kesalahan: %s</string>
     <string name="welcome_user">Halo, %s</string>
+    <string name="next">Lanjut</string>
 </resources>

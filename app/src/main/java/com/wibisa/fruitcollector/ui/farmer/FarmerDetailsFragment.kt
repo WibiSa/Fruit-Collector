@@ -47,7 +47,7 @@ class FarmerDetailsFragment : Fragment() {
 
         componentUiSetup()
 
-        observeAddFarmerUiState()
+        observeEditFarmerUiState()
 
         observeDeleteFarmerUiState()
     }
@@ -111,7 +111,7 @@ class FarmerDetailsFragment : Fragment() {
         viewModel.editFarmer(token, args.farmer.id, inputAddFarmer)
     }
 
-    private fun observeAddFarmerUiState() {
+    private fun observeEditFarmerUiState() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.editFarmerUiState.collect { ui ->
