@@ -116,4 +116,24 @@ interface ApiServices {
         @Field("price") price: Int,
         @Field("price_total") totalPrice: Int
     ): AddFarmerTransactionNetwork
+
+    @GET("api/collector/transaction/farmer")
+    suspend fun getListFarmerTransaction(
+        @Header("Authorization") token: String,
+    ): ListFarmerTransactionNetwork
+
+    @FormUrlEncoded
+    @POST("api/collector/transaction/customer")
+    suspend fun createCustomerTransaction(
+        @Header("Authorization") token: String,
+        @Field("farmer_transaction_id") farmerTransactionId: String,
+        @Field("weight") quantity: Int,
+        @Field("price") price: Int,
+        @Field("shiping_payment") shippingPrice: Int,
+        @Field("total_payment") totalPrice: Int,
+        @Field("shiping_date") shippingDate: String,
+        @Field("address") address: String,
+        @Field("receiver_name") buyerName: String,
+        @Field("phone_number") phone: String
+    ): AddCustomerTransactionNetwork
 }

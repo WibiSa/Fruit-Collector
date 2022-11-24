@@ -31,9 +31,9 @@ data class Commodity(
     val verfiedDate: String,
     val weight: Int,
     @SerializedName("price_kg")
-    val priceKg: Any?,
+    val priceKg: Int?,
     @SerializedName("weight_selled")
-    val weightSelled: Any?,
+    val weightSelled: Int?,
     @SerializedName("created_at")
     val createdAt: String,
     @SerializedName("updated_at")

@@ -2,7 +2,9 @@ package com.wibisa.fruitcollector.core.util
 
 import com.wibisa.fruitcollector.core.data.remote.response.Commodity
 import com.wibisa.fruitcollector.core.data.remote.response.Farmer
+import com.wibisa.fruitcollector.core.data.remote.response.FarmerTransaction
 import com.wibisa.fruitcollector.core.data.remote.response.Fruit
+import com.wibisa.fruitcollector.core.domain.model.TransactionFarmerCommodity
 
 object DataMapper {
 
@@ -37,6 +39,19 @@ object DataMapper {
                 harvestDate = it.harvestingDate,
                 stock = it.weight,
                 isValid = it.verified
+            )
+        }
+
+    fun mapFarmerTransactionNetworkToDomain(list: List<FarmerTransaction>): List<TransactionFarmerCommodity> =
+        list.map {
+            TransactionFarmerCommodity(
+                id = it.id,
+                commodityName = it.fruitCommodity.fruit.name,
+                farmerName = it.fruitCommodity.farmer.name,
+                grade = it.fruitCommodity.fruitGrade,
+                harvestDate = it.fruitCommodity.harvestingDate,
+                stock = it.weight,
+                pricePerKg = it.priceKg
             )
         }
 }
