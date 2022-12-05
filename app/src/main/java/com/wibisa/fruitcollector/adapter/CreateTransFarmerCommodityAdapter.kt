@@ -10,33 +10,33 @@ import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.core.domain.model.Commodity
 import com.wibisa.fruitcollector.core.util.hide
 import com.wibisa.fruitcollector.core.util.show
-import com.wibisa.fruitcollector.databinding.ItemTransFarmerCommodityBinding
+import com.wibisa.fruitcollector.databinding.ItemCreateFarmerTransactionBinding
 
-class TransFarmerCommodityAdapter(
+class CreateTransFarmerCommodityAdapter(
     private val context: Context,
-    private val clickListener: CommodityTransListener
+    private val clickListener: CommodityListener
 ) :
-    ListAdapter<Commodity, TransFarmerCommodityAdapter.CommodityViewHolder>(COMPARATOR) {
+    ListAdapter<Commodity, CreateTransFarmerCommodityAdapter.ViewHolder>(COMPARATOR) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommodityViewHolder {
-        val itemTransFarmerCommodityBinding =
-            ItemTransFarmerCommodityBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val itemCreateFarmerTransactionBinding =
+            ItemCreateFarmerTransactionBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
-        return CommodityViewHolder(itemTransFarmerCommodityBinding)
+        return ViewHolder(itemCreateFarmerTransactionBinding)
     }
 
-    override fun onBindViewHolder(holder: CommodityViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val commodity = getItem(position)
         if (commodity != null)
             holder.bind(commodity, clickListener)
     }
 
-    inner class CommodityViewHolder(private val binding: ItemTransFarmerCommodityBinding) :
+    inner class ViewHolder(private val binding: ItemCreateFarmerTransactionBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Commodity, clickListener: CommodityTransListener) {
+        fun bind(item: Commodity, clickListener: CommodityListener) {
             binding.apply {
                 val fruitAndGrade =
                     context.getString(R.string.fruit_name_and_grade, item.commodityName, item.grade)
@@ -61,8 +61,4 @@ class TransFarmerCommodityAdapter(
                 oldItem == newItem
         }
     }
-}
-
-class CommodityTransListener(val clickListener: (commodity: Commodity) -> Unit) {
-    fun onClick(commodity: Commodity) = clickListener(commodity)
 }

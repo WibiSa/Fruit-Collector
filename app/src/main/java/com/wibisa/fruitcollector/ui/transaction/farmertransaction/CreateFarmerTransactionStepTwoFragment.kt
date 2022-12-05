@@ -18,7 +18,7 @@ import com.wibisa.fruitcollector.core.util.hide
 import com.wibisa.fruitcollector.core.util.isNotNullOrEmpty
 import com.wibisa.fruitcollector.core.util.showToast
 import com.wibisa.fruitcollector.databinding.FragmentCreateFarmerTransactionStepTwoBinding
-import com.wibisa.fruitcollector.databinding.ItemTransFarmerCommodityBinding
+import com.wibisa.fruitcollector.databinding.ItemCreateFarmerTransactionBinding
 import com.wibisa.fruitcollector.viewmodel.CreateFarmerTransactionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 class CreateFarmerTransactionStepTwoFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateFarmerTransactionStepTwoBinding
-    private lateinit var partialBinding: ItemTransFarmerCommodityBinding
+    private lateinit var partialBinding: ItemCreateFarmerTransactionBinding
     private val mainFlowNavController: NavController? by lazy { view?.findNavController() }
     private val viewModel: CreateFarmerTransactionViewModel by hiltNavGraphViewModels(R.id.createTransactionWithFarmer)
 

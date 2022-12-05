@@ -20,7 +20,7 @@ import com.wibisa.fruitcollector.core.util.hideKeyboard
 import com.wibisa.fruitcollector.core.util.isNotNullOrEmpty
 import com.wibisa.fruitcollector.core.util.showToast
 import com.wibisa.fruitcollector.databinding.FragmentCreateCustomerTransactionStepTwoBinding
-import com.wibisa.fruitcollector.databinding.ItemTransCustomerCommodityBinding
+import com.wibisa.fruitcollector.databinding.ItemCreateCustomerTransactionBinding
 import com.wibisa.fruitcollector.viewmodel.CreateCustomerTransactionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -31,7 +31,7 @@ import java.util.*
 class CreateCustomerTransactionStepTwoFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateCustomerTransactionStepTwoBinding
-    private lateinit var partialBinding: ItemTransCustomerCommodityBinding
+    private lateinit var partialBinding: ItemCreateCustomerTransactionBinding
     private lateinit var datePicker: MaterialDatePicker<Long>
     private val mainFlowNavController: NavController? by lazy { view?.findNavController() }
     private val viewModel: CreateCustomerTransactionViewModel by hiltNavGraphViewModels(R.id.createTransactionWithCustomer)
@@ -94,7 +94,7 @@ class CreateCustomerTransactionStepTwoFragment : Fragment() {
                 tvHarvestDate.text =
                     getString(R.string.harvest_date_with_date, farmerTransaction.harvestDate)
                 tvStock.text = getString(R.string.stock_with_value, farmerTransaction.stock)
-                tvPricePerKg.text = getString(R.string.price_per_kg, farmerTransaction.pricePerKg)
+                tvPricePerKg.text = getString(R.string.price_per_kg_from_farmer, farmerTransaction.pricePerKg)
             }
         }
     }

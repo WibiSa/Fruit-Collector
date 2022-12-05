@@ -12,10 +12,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.wibisa.fruitcollector.R
-import com.wibisa.fruitcollector.adapter.TransCustomerCommodityAdapter
-import com.wibisa.fruitcollector.adapter.TransCustomerCommodityListener
+import com.wibisa.fruitcollector.adapter.CreateTransCustomerCommodityAdapter
+import com.wibisa.fruitcollector.adapter.CreateTransCustomerCommodityListener
 import com.wibisa.fruitcollector.core.util.ApiResult
-import com.wibisa.fruitcollector.core.util.LocalResourceData
 import com.wibisa.fruitcollector.core.util.showToast
 import com.wibisa.fruitcollector.databinding.FragmentCreateCustomerTransactionStepOneBinding
 import com.wibisa.fruitcollector.viewmodel.CreateCustomerTransactionViewModel
@@ -26,8 +25,7 @@ import kotlinx.coroutines.launch
 class CreateCustomerTransactionStepOneFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateCustomerTransactionStepOneBinding
-    private lateinit var adapter: TransCustomerCommodityAdapter
-    private lateinit var localResourceData: LocalResourceData
+    private lateinit var adapter: CreateTransCustomerCommodityAdapter
     private val mainFlowNavController: NavController? by lazy { view?.findNavController() }
     private val viewModel: CreateCustomerTransactionViewModel by hiltNavGraphViewModels(R.id.createTransactionWithCustomer)
 
@@ -51,17 +49,15 @@ class CreateCustomerTransactionStepOneFragment : Fragment() {
 
     private fun componentUiSetup() {
 
-        localResourceData = LocalResourceData(requireContext())
-
         binding.appbar.setNavigationOnClickListener { mainFlowNavController?.popBackStack() }
 
         transCustomerCommodityAdapterSetup()
     }
 
     private fun transCustomerCommodityAdapterSetup() {
-        adapter = TransCustomerCommodityAdapter(
+        adapter = CreateTransCustomerCommodityAdapter(
             context = requireContext(),
-            clickListener = TransCustomerCommodityListener {
+            clickListener = CreateTransCustomerCommodityListener {
                 viewModel.selectedFarmerTransaction.value = it
                 mainFlowNavController?.navigate(R.id.action_createCustomerTransactionStepOne_to_createCustomerTransactionStepTwo)
             })

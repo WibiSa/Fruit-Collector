@@ -100,7 +100,7 @@
 
                 <include
                     android:id="@+id/partial_fruit_commodity"
-                    layout="@layout/item_trans_customer_commodity" />
+                    layout="@layout/item_create_customer_transaction" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.Guideline

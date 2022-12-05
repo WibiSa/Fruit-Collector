@@ -1,6 +1,7 @@
 package com.wibisa.fruitcollector.core.data.repository
 
 import com.wibisa.fruitcollector.core.data.remote.network.ApiServices
+import com.wibisa.fruitcollector.core.data.remote.response.CustomerTransaction
 import com.wibisa.fruitcollector.core.domain.model.Commodity
 import com.wibisa.fruitcollector.core.domain.model.InputAddCustomerTransaction
 import com.wibisa.fruitcollector.core.domain.model.InputAddFarmerTransaction
@@ -78,7 +79,7 @@ class TransactionRepository @Inject constructor(private val api: ApiServices) {
                         emit(ApiResult.Error(response.meta.message))
                     }
                     else -> {
-                        ApiResult.Empty
+                        emit(ApiResult.Empty)
                     }
                 }
             } catch (e: Exception) {
@@ -119,4 +120,25 @@ class TransactionRepository @Inject constructor(private val api: ApiServices) {
             emit(ApiResult.Error(e.message.toString()))
         }
     }
+
+    suspend fun getListCustomerTransaction(token: String): Flow<ApiResult<List<CustomerTransaction>>> =
+        flow {
+            emit(ApiResult.Loading)
+            try {
+                val response = api.getListCustomerTransaction(token = token.tokenFormat())
+                when (response.meta.status) {
+                    API_RESPONSE_SUCCESS -> {
+                        emit(ApiResult.Success(response.data.customerTransaction))
+                    }
+                    API_RESPONSE_FAILED -> {
+                        emit(ApiResult.Error(response.meta.message))
+                    }
+                    else -> {
+                        emit(ApiResult.Empty)
+                    }
+                }
+            } catch (e: Exception) {
+                emit(ApiResult.Error(e.message.toString()))
+            }
+        }
 }

@@ -8,35 +8,38 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.core.domain.model.TransactionFarmerCommodity
-import com.wibisa.fruitcollector.databinding.ItemTransCustomerCommodityBinding
+import com.wibisa.fruitcollector.databinding.ItemFarmerTransactionBinding
 
-class TransCustomerCommodityAdapter(
+class FarmerTransactionAdapter(
     private val context: Context,
-    private val clickListener: TransCustomerCommodityListener
+    private val clickListener: FarmerTransactionListener
 ) :
-    ListAdapter<TransactionFarmerCommodity, TransCustomerCommodityAdapter.CommodityViewHolder>(
+    ListAdapter<TransactionFarmerCommodity, FarmerTransactionAdapter.ViewHolder>(
         COMPARATOR
     ) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommodityViewHolder {
-        val itemTransCustomerCommodityBinding =
-            ItemTransCustomerCommodityBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val itemFarmerTransactionBinding =
+            ItemFarmerTransactionBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
-        return CommodityViewHolder(itemTransCustomerCommodityBinding)
+        return ViewHolder(itemFarmerTransactionBinding)
     }
 
-    override fun onBindViewHolder(holder: CommodityViewHolder, position: Int) {
-        val commodity = getItem(position)
-        if (commodity != null)
-            holder.bind(commodity, clickListener)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val farmerTransaction = getItem(position)
+        if (farmerTransaction != null)
+            holder.bind(farmerTransaction, clickListener)
     }
 
-    inner class CommodityViewHolder(private val binding: ItemTransCustomerCommodityBinding) :
+    inner class ViewHolder(private val binding: ItemFarmerTransactionBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: TransactionFarmerCommodity, clickListener: TransCustomerCommodityListener) {
+        fun bind(
+            item: TransactionFarmerCommodity,
+            clickListener: FarmerTransactionListener
+        ) {
             binding.apply {
                 val fruitAndGrade =
                     context.getString(R.string.fruit_name_and_grade, item.commodityName, item.grade)
@@ -45,7 +48,7 @@ class TransCustomerCommodityAdapter(
                 tvHarvestDate.text =
                     context.getString(R.string.harvest_date_with_date, item.harvestDate)
                 tvStock.text = context.getString(R.string.stock_with_value, item.stock)
-                tvPricePerKg.text = context.getString(R.string.price_per_kg, item.pricePerKg)
+                tvPricePerKg.text = context.getString(R.string.price_per_kg_from_farmer, item.pricePerKg)
             }
 
             itemView.setOnClickListener { clickListener.onClick(item) }
@@ -69,7 +72,7 @@ class TransCustomerCommodityAdapter(
     }
 }
 
-class TransCustomerCommodityListener(val clickListener: (transFarmerCommodity: TransactionFarmerCommodity) -> Unit) {
-    fun onClick(transFarmerCommodity: TransactionFarmerCommodity) =
-        clickListener(transFarmerCommodity)
+class FarmerTransactionListener(val clickListener: (farmerTransaction: TransactionFarmerCommodity) -> Unit) {
+    fun onClick(farmerTransaction: TransactionFarmerCommodity) =
+        clickListener(farmerTransaction)
 }

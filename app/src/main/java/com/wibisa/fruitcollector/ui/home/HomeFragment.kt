@@ -140,6 +140,13 @@ class HomeFragment : Fragment() {
             "Buat Transaksi" -> {
                 mainFlowNavController?.navigate(R.id.action_homeScreen_to_transactionLanding)
             }
+            "Transaksi Petani" -> {
+                mainFlowNavController?.navigate(R.id.action_homeScreen_to_farmerTransaction)
+            }
+            "Transaksi Pelanggan" -> {
+                mainFlowNavController?.navigate(R.id.action_homeScreen_to_customerTransaction)
+            }
+
             else -> {}
         }
     }

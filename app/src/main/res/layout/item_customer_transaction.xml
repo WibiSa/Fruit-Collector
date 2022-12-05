@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/img_begin"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_fruit_bowl"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <ImageView
+            android:id="@+id/img_user"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:alpha="0.75"
+            android:src="@drawable/ic_user"
+            app:layout_constraintStart_toStartOf="@id/tv_fruit_name_and_grade"
+            app:layout_constraintTop_toTopOf="@id/tv_farmer_name"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_calender"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/ic_calender"
+            app:layout_constraintStart_toStartOf="@id/tv_fruit_name_and_grade"
+            app:layout_constraintTop_toTopOf="@id/tv_harvest_date"
+            app:tint="@color/grey"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_stock"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            app:layout_constraintStart_toStartOf="@id/tv_fruit_name_and_grade"
+            app:layout_constraintTop_toTopOf="@id/tv_stock"
+            app:tint="@color/grey"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_farmer_name"
+            style="@style/Poppins.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@id/img_user"
+            app:layout_constraintTop_toBottomOf="@id/tv_fruit_name_and_grade"
+            tools:text="Budi" />
+
+        <TextView
+            android:id="@+id/tv_fruit_name_and_grade"
+            style="@style/Poppins.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@id/img_begin"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Manggis (AAA)" />
+
+        <TextView
+            android:id="@+id/tv_harvest_date"
+            style="@style/Poppins.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@id/img_calender"
+            app:layout_constraintTop_toBottomOf="@id/tv_farmer_name"
+            tools:text="Tanggal panen: 10-10-2022" />
+
+        <TextView
+            android:id="@+id/tv_stock"
+            style="@style/Poppins.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@id/img_calender"
+            app:layout_constraintTop_toBottomOf="@id/tv_harvest_date"
+            tools:text="250 Kg" />
+
+        <TextView
+            android:id="@+id/tv_price_per_kg"
+            style="@style/Poppins.Subtitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/img_calender"
+            app:layout_constraintTop_toBottomOf="@id/tv_stock"
+            tools:text="Harga dari petani: Rp 16.000 /Kg" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

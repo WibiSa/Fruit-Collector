@@ -84,7 +84,7 @@
 
         <include
             android:id="@+id/partial_fruit_commodity"
-            layout="@layout/item_trans_farmer_commodity" />
+            layout="@layout/item_create_farmer_transaction" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.progressindicator.CircularProgressIndicator

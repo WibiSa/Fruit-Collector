@@ -119,7 +119,7 @@ interface ApiServices {
 
     @GET("api/collector/transaction/farmer")
     suspend fun getListFarmerTransaction(
-        @Header("Authorization") token: String,
+        @Header("Authorization") token: String
     ): ListFarmerTransactionNetwork
 
     @FormUrlEncoded
@@ -136,4 +136,9 @@ interface ApiServices {
         @Field("receiver_name") buyerName: String,
         @Field("phone_number") phone: String
     ): AddCustomerTransactionNetwork
+
+    @GET("api/collector/transaction/customer")
+    suspend fun getListCustomerTransaction(
+        @Header("Authorization") token: String
+    ): ListCustomerTransactionNetwork
 }

@@ -12,8 +12,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.wibisa.fruitcollector.R
-import com.wibisa.fruitcollector.adapter.CommodityTransListener
-import com.wibisa.fruitcollector.adapter.TransFarmerCommodityAdapter
+import com.wibisa.fruitcollector.adapter.CommodityListener
+import com.wibisa.fruitcollector.adapter.CreateTransFarmerCommodityAdapter
 import com.wibisa.fruitcollector.core.util.ApiResult
 import com.wibisa.fruitcollector.core.util.showToast
 import com.wibisa.fruitcollector.databinding.FragmentCreateFarmerTransactionStepOneBinding
@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 class CreateFarmerTransactionStepOneFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateFarmerTransactionStepOneBinding
-    private lateinit var adapter: TransFarmerCommodityAdapter
+    private lateinit var adapter: CreateTransFarmerCommodityAdapter
     private val mainFlowNavController: NavController? by lazy { view?.findNavController() }
     private val viewModel: CreateFarmerTransactionViewModel by hiltNavGraphViewModels(R.id.createTransactionWithFarmer)
 
@@ -56,9 +56,9 @@ class CreateFarmerTransactionStepOneFragment : Fragment() {
     }
 
     private fun fruitCommodityAdapterSetup() {
-        adapter = TransFarmerCommodityAdapter(
+        adapter = CreateTransFarmerCommodityAdapter(
             context = requireContext(),
-            clickListener = CommodityTransListener {
+            clickListener = CommodityListener {
                 viewModel.selectedCommodity.value = it
                 mainFlowNavController?.navigate(R.id.action_createFarmerTransactionStepOne_to_createFarmerTransactionStepTwo)
             })
