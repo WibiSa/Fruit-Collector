@@ -13,14 +13,14 @@ interface ApiServices {
         @Field("email") email: String,
         @Field("password") password: String,
         @Field("password_confirmation") passwordConfirm: String
-    ): RegisterNetwork
+    ): RegisterNetworkX
 
     @FormUrlEncoded
     @POST("api/login")
     suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String
-    ): LoginNetwork
+    ): LoginNetworkX
 
     @POST("api/logout")
     suspend fun logout(
@@ -41,7 +41,7 @@ interface ApiServices {
     @GET("api/collector/farmer")
     suspend fun getFarmers(
         @Header("Authorization") token: String
-    ): FarmersNetwork
+    ): FarmersNetworkX
 
     @FormUrlEncoded
     @PUT("api/collector/farmer/{id_farmer}")

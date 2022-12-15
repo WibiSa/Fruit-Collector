@@ -28,11 +28,11 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="center"
         android:layout_marginTop="-30dp"
+        android:scaleType="center"
         android:src="@drawable/img_dot_grid"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -80,7 +80,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="@string/land_area"
-            app:layout_constraintTop_toBottomOf="@id/tf_name_layout">
+            app:layout_constraintTop_toBottomOf="@id/tf_name_layout"
+            app:suffixText="Hektar">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tf_land_area"
@@ -112,7 +113,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="@string/production_estimate"
-            app:layout_constraintTop_toBottomOf="@id/tf_number_of_tree_layout">
+            app:layout_constraintTop_toBottomOf="@id/tf_number_of_tree_layout"
+            app:suffixText="Kg">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tf_production_estimate"
@@ -128,6 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="@string/land_location"
+            app:helperText="Contoh: Jalan Pejanggik No. 35, Mataram"
             app:layout_constraintTop_toBottomOf="@id/tf_production_estimate_layout">
 
             <com.google.android.material.textfield.TextInputEditText

@@ -9,7 +9,7 @@
         android:id="@+id/homeScreen"
         android:name="com.wibisa.fruitcollector.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeScreen_to_addFarmer"
             app:destination="@id/addFarmer" />
@@ -25,6 +25,12 @@
         <action
             android:id="@+id/action_homeScreen_to_transactionLanding"
             app:destination="@id/transactionLanding" />
+        <action
+            android:id="@+id/action_homeScreen_to_farmerTransaction"
+            app:destination="@id/farmerTransaction" />
+        <action
+            android:id="@+id/action_homeScreen_to_customerTransaction"
+            app:destination="@id/customerTransaction" />
     </fragment>
     <fragment
         android:id="@+id/account"
@@ -40,7 +46,7 @@
         android:id="@+id/farmers"
         android:name="com.wibisa.fruitcollector.ui.farmer.FarmersFragment"
         android:label="fragment_farmers"
-        tools:layout="@layout/fragment_farmers" >
+        tools:layout="@layout/fragment_farmers">
         <action
             android:id="@+id/action_farmers_to_farmerDetails"
             app:destination="@id/farmerDetails" />
@@ -49,12 +55,13 @@
         android:id="@+id/farmerDetails"
         android:name="com.wibisa.fruitcollector.ui.farmer.FarmerDetailsFragment"
         android:label="fragment_farmer_details"
-        tools:layout="@layout/fragment_farmer_details" >
+        tools:layout="@layout/fragment_farmer_details">
         <argument
             android:name="farmer"
             app:argType="com.wibisa.fruitcollector.core.domain.model.Farmer" />
     </fragment>
-    <navigation android:id="@+id/recordCommodityGraph"
+    <navigation
+        android:id="@+id/recordCommodityGraph"
         app:startDestination="@id/recordCommodityStepOne">
         <fragment
             android:id="@+id/recordCommodityStepTwo"
@@ -80,7 +87,7 @@
         android:id="@+id/commodity"
         android:name="com.wibisa.fruitcollector.ui.commodity.CommodityFragment"
         android:label="fragment_commodity"
-        tools:layout="@layout/fragment_commodity" >
+        tools:layout="@layout/fragment_commodity">
         <action
             android:id="@+id/action_commodity_to_commodityDetails"
             app:destination="@id/commodityDetails" />
@@ -89,7 +96,7 @@
         android:id="@+id/commodityDetails"
         android:name="com.wibisa.fruitcollector.ui.commodity.CommodityDetailsFragment"
         android:label="fragment_commodity_details"
-        tools:layout="@layout/fragment_commodity_details" >
+        tools:layout="@layout/fragment_commodity_details">
         <argument
             android:name="commodity"
             app:argType="com.wibisa.fruitcollector.core.domain.model.Commodity" />
@@ -98,7 +105,7 @@
         android:id="@+id/transactionLanding"
         android:name="com.wibisa.fruitcollector.ui.transaction.TransactionLandingFragment"
         android:label="fragment_transaction_landing"
-        tools:layout="@layout/fragment_transaction_landing" >
+        tools:layout="@layout/fragment_transaction_landing">
         <action
             android:id="@+id/action_transactionLanding_to_createTransactionWithFarmer"
             app:destination="@id/createTransactionWithFarmer" />
@@ -106,7 +113,8 @@
             android:id="@+id/action_transactionLanding_to_createTransactionWithCustomer"
             app:destination="@id/createTransactionWithCustomer" />
     </fragment>
-    <navigation android:id="@+id/createTransactionWithFarmer"
+    <navigation
+        android:id="@+id/createTransactionWithFarmer"
         app:startDestination="@id/createFarmerTransactionStepOne">
         <fragment
             android:id="@+id/createFarmerTransactionStepOne"
@@ -123,7 +131,8 @@
             android:label="fragment_create_farmer_transaction_step_two"
             tools:layout="@layout/fragment_create_farmer_transaction_step_two" />
     </navigation>
-    <navigation android:id="@+id/createTransactionWithCustomer"
+    <navigation
+        android:id="@+id/createTransactionWithCustomer"
         app:startDestination="@id/createCustomerTransactionStepOne">
         <fragment
             android:id="@+id/createCustomerTransactionStepTwo"
@@ -140,4 +149,40 @@
                 app:destination="@id/createCustomerTransactionStepTwo" />
         </fragment>
     </navigation>
+    <fragment
+        android:id="@+id/farmerTransaction"
+        android:name="com.wibisa.fruitcollector.ui.transaction.farmertransaction.FarmerTransactionFragment"
+        android:label="fragment_farmer_transaction"
+        tools:layout="@layout/fragment_farmer_transaction">
+        <action
+            android:id="@+id/action_farmerTransaction_to_farmerTransactionDetails"
+            app:destination="@id/farmerTransactionDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerTransaction"
+        android:name="com.wibisa.fruitcollector.ui.transaction.customertransaction.CustomerTransactionFragment"
+        android:label="fragment_customer_transaction"
+        tools:layout="@layout/fragment_customer_transaction">
+        <action
+            android:id="@+id/action_customerTransaction_to_customerTransactionDetails"
+            app:destination="@id/customerTransactionDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/farmerTransactionDetails"
+        android:name="com.wibisa.fruitcollector.ui.transaction.farmertransaction.FarmerTransactionDetailsFragment"
+        android:label="fragment_farmer_transaction_details"
+        tools:layout="@layout/fragment_farmer_transaction_details">
+        <argument
+            android:name="farmerTransaction"
+            app:argType="com.wibisa.fruitcollector.core.domain.model.TransactionFarmerCommodity" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerTransactionDetails"
+        android:name="com.wibisa.fruitcollector.ui.transaction.customertransaction.CustomerTransactionDetailsFragment"
+        android:label="fragment_customer_transaction_details"
+        tools:layout="@layout/fragment_customer_transaction_details" >
+        <argument
+            android:name="customerTransaction"
+            app:argType="com.wibisa.fruitcollector.core.data.remote.response.CustomerTransaction" />
+    </fragment>
 </navigation>

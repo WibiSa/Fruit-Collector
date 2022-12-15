@@ -42,7 +42,7 @@ class FarmerRepository @Inject constructor(private val api: ApiServices) {
             val response = api.getFarmers(token = token.tokenFormat())
             return when (response.meta.status) {
                 API_RESPONSE_SUCCESS -> {
-                    val farmers = DataMapper.mapFarmersNetworkToDomain(response.data.farmer)
+                    val farmers = DataMapper.mapFarmersNetworkToDomain(response.data)
                     ApiResult.Success(farmers)
                 }
                 API_RESPONSE_FAILED -> {

@@ -57,8 +57,11 @@ class CustomerTransactionFragment : Fragment() {
         adapter = CustomerTransactionAdapter(
             context = requireContext(),
             clickListener = CustomerTransactionListener {
-                // TODO: to detail pass data too!
-                requireContext().showToast("tapped!")
+                val destination =
+                    CustomerTransactionFragmentDirections.actionCustomerTransactionToCustomerTransactionDetails(
+                        it
+                    )
+                mainFlowNavController?.navigate(destination)
             })
         binding.rvCustomerTransaction.adapter = adapter
     }

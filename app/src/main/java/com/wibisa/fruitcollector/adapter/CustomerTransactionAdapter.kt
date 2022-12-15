@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.core.data.remote.response.CustomerTransaction
+import com.wibisa.fruitcollector.core.util.rupiahCurrencyFormat
 import com.wibisa.fruitcollector.databinding.ItemCustomerTransactionBinding
 
 class CustomerTransactionAdapter(
@@ -51,7 +52,8 @@ class CustomerTransactionAdapter(
                     )
                 tvStock.text =
                     context.getString(R.string.stock_with_value, item.weight)
-                tvPricePerKg.text = context.getString(R.string.price_per_kg, item.price)
+                val price = item.price.toString().rupiahCurrencyFormat()
+                tvPricePerKg.text = context.getString(R.string.price_per_kg_with_value, price)
             }
 
             itemView.setOnClickListener { clickListener.onClick(item) }

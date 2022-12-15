@@ -72,7 +72,7 @@ class TransactionRepository @Inject constructor(private val api: ApiServices) {
                 when (response.meta.status) {
                     API_RESPONSE_SUCCESS -> {
                         val commodities =
-                            DataMapper.mapFarmerTransactionNetworkToDomain(response.data.farmerTransaction)
+                            DataMapper.mapFarmerTransactionNetworkToDomain(response.data)
                         emit(ApiResult.Success(commodities))
                     }
                     API_RESPONSE_FAILED -> {
@@ -128,7 +128,7 @@ class TransactionRepository @Inject constructor(private val api: ApiServices) {
                 val response = api.getListCustomerTransaction(token = token.tokenFormat())
                 when (response.meta.status) {
                     API_RESPONSE_SUCCESS -> {
-                        emit(ApiResult.Success(response.data.customerTransaction))
+                        emit(ApiResult.Success(response.data))
                     }
                     API_RESPONSE_FAILED -> {
                         emit(ApiResult.Error(response.meta.message))

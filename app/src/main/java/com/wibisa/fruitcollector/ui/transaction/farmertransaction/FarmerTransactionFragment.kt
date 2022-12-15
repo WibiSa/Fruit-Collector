@@ -57,8 +57,9 @@ class FarmerTransactionFragment : Fragment() {
         adapter = FarmerTransactionAdapter(
             context = requireContext(),
             clickListener = FarmerTransactionListener {
-                // TODO: to detail pass data too!
-                requireContext().showToast("tapped!")
+                val destination =
+                    FarmerTransactionFragmentDirections.actionFarmerTransactionToFarmerTransactionDetails(it)
+                mainFlowNavController?.navigate(destination)
             })
         binding.rvFarmerTransaction.adapter = adapter
     }

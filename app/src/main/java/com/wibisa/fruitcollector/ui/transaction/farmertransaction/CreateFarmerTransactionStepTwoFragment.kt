@@ -13,10 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.wibisa.fruitcollector.R
-import com.wibisa.fruitcollector.core.util.ApiResult
-import com.wibisa.fruitcollector.core.util.hide
-import com.wibisa.fruitcollector.core.util.isNotNullOrEmpty
-import com.wibisa.fruitcollector.core.util.showToast
+import com.wibisa.fruitcollector.core.util.*
 import com.wibisa.fruitcollector.databinding.FragmentCreateFarmerTransactionStepTwoBinding
 import com.wibisa.fruitcollector.databinding.ItemCreateFarmerTransactionBinding
 import com.wibisa.fruitcollector.viewmodel.CreateFarmerTransactionViewModel
@@ -94,7 +91,7 @@ class CreateFarmerTransactionStepTwoFragment : Fragment() {
 
     private fun observeTotalPrice() {
         viewModel.totalPrice.observe(viewLifecycleOwner) {
-            binding.tvPriceTotal.text = it.toString()
+            binding.tvPriceTotal.text = it.toString().rupiahCurrencyFormat()
         }
     }
 

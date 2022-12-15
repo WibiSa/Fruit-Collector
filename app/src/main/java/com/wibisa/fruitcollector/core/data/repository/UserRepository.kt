@@ -32,7 +32,7 @@ class UserRepository @Inject constructor(
             )
             return when (response.meta.status) {
                 API_RESPONSE_SUCCESS -> {
-                    ApiResult.Success(response.data.asDomainModel())
+                    ApiResult.Success(response.data[0].asDomainModel())
                 }
                 API_RESPONSE_FAILED -> {
                     ApiResult.Error(response.meta.message)
@@ -51,7 +51,7 @@ class UserRepository @Inject constructor(
             val response = api.login(email = inputLogin.email, password = inputLogin.password)
             return when (response.meta.status) {
                 API_RESPONSE_SUCCESS -> {
-                    ApiResult.Success(response.data.asDomainModel())
+                    ApiResult.Success(response.data[0].asDomainModel())
                 }
                 API_RESPONSE_FAILED -> {
                     ApiResult.Error(response.meta.message)

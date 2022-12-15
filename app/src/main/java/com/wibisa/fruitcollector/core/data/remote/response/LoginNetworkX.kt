@@ -3,18 +3,14 @@ package com.wibisa.fruitcollector.core.data.remote.response
 import com.google.gson.annotations.SerializedName
 import com.wibisa.fruitcollector.core.domain.model.Login
 
-data class LoginNetwork(
+data class LoginNetworkX(
+    @SerializedName("meta")
     val meta: Meta,
-    val `data`: LoginData
+    @SerializedName("data")
+    val `data`: List<UserDataFromLoginX>
 )
 
-data class LoginData(
-    val message: String,
-    val user: UserDataFromLogin,
-    val token: String
-)
-
-data class UserDataFromLogin(
+data class UserDataFromLoginX(
     val id: String,
     val name: String,
     val email: String,
@@ -25,8 +21,9 @@ data class UserDataFromLogin(
     @SerializedName("created_at")
     val createdAt: String,
     @SerializedName("updated_at")
-    val updatedAt: String
+    val updatedAt: String,
+    val token: String
 )
 
-fun LoginData.asDomainModel(): Login =
-    Login(id = user.id, name = user.name, token = token)
+fun UserDataFromLoginX.asDomainModel(): Login =
+    Login(id = id, name = name, token = token)

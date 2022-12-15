@@ -1,18 +1,16 @@
 package com.wibisa.fruitcollector.core.data.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class ListFarmerTransactionNetwork(
-    val data: FarmerTransactionData,
+    val data: List<FarmerTransactionData>,
     val meta: Meta
 )
 
+@Parcelize
 data class FarmerTransactionData(
-    @SerializedName("farmer_transaction")
-    val farmerTransaction: List<FarmerTransaction>
-)
-
-data class FarmerTransaction(
     @SerializedName("created_at")
     val createdAt: String,
     @SerializedName("fruit_commodity")
@@ -28,4 +26,4 @@ data class FarmerTransaction(
     val weight: Int,
     @SerializedName("weight_selled")
     val soldWeight: Int?
-)
+): Parcelable

@@ -140,7 +140,7 @@ class CommodityDetailsFragment : Fragment() {
             val lowerBound = calendar.timeInMillis
 
             val validators: ArrayList<CalendarConstraints.DateValidator> = arrayListOf()
-            validators.add(DateValidatorPointBackward.before(lowerBound))
+//            validators.add(DateValidatorPointBackward.before(lowerBound))12
             validators.add(DateValidatorPointForward.now())
 
             val constraintsBuilder = CalendarConstraints.Builder()

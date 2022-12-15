@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import java.text.NumberFormat
+import java.util.*
 
 fun EditText.onChange(cb: (String) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
@@ -64,13 +66,15 @@ fun Fragment.hideKeyboard() {
     view?.let { activity?.hideKeyboard(it) }
 }
 
-fun Activity.hideKeyboard() {
-    hideKeyboard(currentFocus ?: View(this))
-}
-
 fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
 fun String.tokenFormat(): String = "Bearer $this"
+
+fun String.rupiahCurrencyFormat(): String {
+    val localeId = Locale("in", "ID")
+    val numberFormat = NumberFormat.getCurrencyInstance(localeId)
+    return numberFormat.format(this.toDouble()).toString()
+}

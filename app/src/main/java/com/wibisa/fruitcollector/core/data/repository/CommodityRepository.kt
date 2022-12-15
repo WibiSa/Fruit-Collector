@@ -17,7 +17,7 @@ class CommodityRepository @Inject constructor(private val api: ApiServices) {
             val response = api.getFruits(token = token.tokenFormat())
             return when (response.meta.status) {
                 API_RESPONSE_SUCCESS -> {
-                    val fruit = DataMapper.mapFruitsNetworkToDomain(response.data.fruits)
+                    val fruit = DataMapper.mapFruitsNetworkToDomain(response.data)
                     ApiResult.Success(fruit)
                 }
                 API_RESPONSE_FAILED -> {

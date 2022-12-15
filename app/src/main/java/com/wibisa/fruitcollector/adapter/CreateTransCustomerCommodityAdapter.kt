@@ -48,7 +48,7 @@ class CreateTransCustomerCommodityAdapter(
                 tvHarvestDate.text =
                     context.getString(R.string.harvest_date_with_date, item.harvestDate)
                 tvStock.text = context.getString(R.string.stock_with_value, item.stock)
-                tvPricePerKg.text = context.getString(R.string.price_per_kg_from_farmer, item.pricePerKg)
+                tvPricePerKg.text = context.getString(R.string.price_per_kg_from_farmer_with_value, item.pricePerKg.toString())
             }
 
             itemView.setOnClickListener { clickListener.onClick(item) }

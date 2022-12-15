@@ -15,10 +15,7 @@ import androidx.navigation.findNavController
 import com.google.android.material.datepicker.*
 import com.wibisa.fruitcollector.R
 import com.wibisa.fruitcollector.core.domain.model.InputAddCustomerTransaction
-import com.wibisa.fruitcollector.core.util.ApiResult
-import com.wibisa.fruitcollector.core.util.hideKeyboard
-import com.wibisa.fruitcollector.core.util.isNotNullOrEmpty
-import com.wibisa.fruitcollector.core.util.showToast
+import com.wibisa.fruitcollector.core.util.*
 import com.wibisa.fruitcollector.databinding.FragmentCreateCustomerTransactionStepTwoBinding
 import com.wibisa.fruitcollector.databinding.ItemCreateCustomerTransactionBinding
 import com.wibisa.fruitcollector.viewmodel.CreateCustomerTransactionViewModel
@@ -94,7 +91,8 @@ class CreateCustomerTransactionStepTwoFragment : Fragment() {
                 tvHarvestDate.text =
                     getString(R.string.harvest_date_with_date, farmerTransaction.harvestDate)
                 tvStock.text = getString(R.string.stock_with_value, farmerTransaction.stock)
-                tvPricePerKg.text = getString(R.string.price_per_kg_from_farmer, farmerTransaction.pricePerKg)
+                val price = farmerTransaction.pricePerKg.toString().rupiahCurrencyFormat()
+                tvPricePerKg.text = getString(R.string.price_per_kg_from_farmer_with_value, price)
             }
         }
     }
@@ -173,7 +171,7 @@ class CreateCustomerTransactionStepTwoFragment : Fragment() {
             val lowerBound = calendar.timeInMillis
 
             val validators: ArrayList<CalendarConstraints.DateValidator> = arrayListOf()
-            validators.add(DateValidatorPointBackward.before(lowerBound))
+//            validators.add(DateValidatorPointBackward.before(lowerBound))
             validators.add(DateValidatorPointForward.now())
 
             val constraintsBuilder = CalendarConstraints.Builder()
